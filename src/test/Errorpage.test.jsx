@@ -1,10 +1,10 @@
 import { getByRole, getByText, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Errorpage from "../components/ErrorPage";
+import ErrorPage from "../components/ErrorPage";
 
 describe("Errorpage", () => {
   it("renders Errorpage Component", () => {
-    render(<Errorpage />);
+    render(<ErrorPage />);
     const error = screen.getByText("Error");
     expect(error).toBeInTheDocument();
   });
