@@ -7,7 +7,6 @@ const FeaturedItems = () => {
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
-  const [isOpen, setisOpen] = useState(false);
   const [itemCount, setItemCount] = useState([]);
 
   const handleAddCart = (e, itemId) => {
@@ -47,7 +46,7 @@ const FeaturedItems = () => {
         Loading...
       </Box>
     );
-  if (error) return <div>Oops come back later</div>;
+  if (error) return <Box>Oops come back later</Box>;
   return (
     <>
       <Heading p={5} textAlign={"center"}>

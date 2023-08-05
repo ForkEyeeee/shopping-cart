@@ -30,7 +30,6 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useRef } from "react";
 
 const Item = ({
   children,
@@ -42,9 +41,7 @@ const Item = ({
   handleAddCart,
   handleClearItems,
 }) => {
-  const initialFocusRef = useRef();
-
-  console.log(children);
+  // console.log(children);
   return (
     <GridItem>
       <VStack className="test">
@@ -52,7 +49,7 @@ const Item = ({
           <CardBody>
             <Image src={image} alt={title} borderRadius="lg" />
             <Stack mt="6" spacing="3">
-              <Text>{children}</Text>
+              <Box>{children}</Box>
             </Stack>
           </CardBody>
           <Divider />
@@ -65,7 +62,7 @@ const Item = ({
                 Clear Items
               </Button>
 
-              <Popover initialFocusRef={initialFocusRef} placement="bottom">
+              <Popover placement="bottom">
                 <PopoverTrigger>
                   <Button variant="solid" colorScheme="blue">
                     Add to Cart
@@ -80,7 +77,6 @@ const Item = ({
                     </Flex>
                     <PopoverBody>
                       <NumberInput
-                        ref={initialFocusRef}
                         float={"right"}
                         size="md"
                         maxW={24}
