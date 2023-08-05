@@ -1,3 +1,7 @@
+Sure, we can add the Mock Service Worker (MSW) in the "Technology Stack" section and describe it in the "Features" section as it plays a crucial role in handling network requests for testing. Here's the updated readme:
+
+---
+
 # Shopping Cart Project
 
 This is an interactive online shopping cart where users can view, add, and customize products in their cart.
@@ -57,6 +61,7 @@ This project is built using the following technologies:
 - [Chakra UI](https://chakra-ui.com/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [Jest](https://jestjs.io/)
+- [Mock Service Worker (MSW)](https://mswjs.io/)
 
 ## Features
 
@@ -65,3 +70,4 @@ This project is built using the following technologies:
 - Individual product cards with add to cart button and quantity specification.
 - Dynamic shopping cart updates based on user orders.
 - Fetching product data from the FakeStore API.
+- MSW is used to intercept network requests and provide controlled responses, enabling effective testing of components that rely on API calls.

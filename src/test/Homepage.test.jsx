@@ -8,6 +8,4 @@ describe("Homepage", () => {
     const homeElement = screen.getByText("Shopping Cart");
     expect(homeElement).toBeInTheDocument();
   });
-
-  it();
 });

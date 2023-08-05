@@ -12,6 +12,5 @@ describe("Navbar", () => {
     expect(shoppingCart).toBeInTheDocument();
     expect(aboutUs).toBeInTheDocument();
   });
-
-  it();
+  ``;
 });

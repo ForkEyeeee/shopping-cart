@@ -12,13 +12,13 @@ const FeaturedItems = () => {
     return (
       <Box>
         {" "}
-        <Heading p={5} textAlign={"center"}>
+        {/* <Heading p={5} textAlign={"center"}>
           Featured Items
-        </Heading>
+        </Heading> */}
         Loading...
       </Box>
     );
-  if (error) return <p>{error.message}</p>;
+  if (error) return <div>Oops come back later</div>;
 
   return (
     <>

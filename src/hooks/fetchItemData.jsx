@@ -9,6 +9,9 @@ const useDataFetching = (url, options = {}) => {
     const fetchData = async () => {
       try {
         const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
         const json = await response.json();
         setData(json);
         setLoading(false);

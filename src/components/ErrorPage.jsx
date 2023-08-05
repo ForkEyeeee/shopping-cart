@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 
-function ErrorPage() {
+function Errorpage() {
   return <Box>Error</Box>;
 }
 
-export default ErrorPage;
+export default Errorpage;
