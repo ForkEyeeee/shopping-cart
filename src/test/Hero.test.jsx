@@ -9,6 +9,4 @@ describe("Hero", () => {
     expect(img).toHaveAttribute("src", "src/assets/hero-image.jpg");
     expect(img).toHaveAttribute("alt", "Fruit Stand in Hong Kong");
   });
-
-  it();
 });

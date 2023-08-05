@@ -19,7 +19,6 @@ const FeaturedItems = () => {
       </Box>
     );
   if (error) return <div>Oops come back later</div>;
-
   return (
     <>
       <Heading p={5} textAlign={"center"}>
@@ -27,7 +26,7 @@ const FeaturedItems = () => {
       </Heading>
       <Grid templateColumns="repeat(1, 1fr)" gap={20} className="aaaa" p={5}>
         {data.map((item, index) => (
-          <Item key={index} image={item.image}>
+          <Item key={index} image={item.image} title={item.title}>
             <Text p={5}>{item.title}</Text>
           </Item>
         ))}

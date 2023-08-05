@@ -15,17 +15,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const Item = ({ children, image }) => {
+const Item = ({ children, image, title }) => {
   return (
     <GridItem>
       <VStack className="test">
         <Card maxW="sm">
           <CardBody>
-            <Image
-              src={image}
-              alt="Green double couch with wooden legs"
-              borderRadius="lg"
-            />
+            <Image src={image} alt={title} borderRadius="lg" />
             <Stack mt="6" spacing="3">
               <Heading size="md">{children}</Heading>
             </Stack>

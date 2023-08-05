@@ -8,6 +8,4 @@ describe("Errorpage", () => {
     const error = screen.getByText("Error");
     expect(error).toBeInTheDocument();
   });
-
-  it();
 });
