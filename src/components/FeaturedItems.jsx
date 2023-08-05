@@ -25,6 +25,18 @@ const FeaturedItems = () => {
     setItemCount((prevItems) => [...prevItems, { itemId, count: Number(e) }]);
   };
 
+  const handleClearItems = (e, itemId) => {
+    const getItem = itemCount.filter((item) => item.itemId === itemId);
+    if (getItem.length > 0) {
+      setItemCount((prevState) =>
+        prevState.map((item) =>
+          item.itemId === itemId ? { ...item, count: 0 } : item
+        )
+      );
+    }
+    return;
+  };
+
   if (loading)
     return (
       <Box>
@@ -51,9 +63,17 @@ const FeaturedItems = () => {
             setItemCount={setItemCount}
             itemId={item.id}
             handleAddCart={handleAddCart}
+            handleClearItems={handleClearItems}
           >
-            <Text p={5}>{item.title}</Text>
-            <Text textAlign={"end"} color={"green"}>
+            <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
+              {item.title}
+            </Text>
+            <Text
+              textAlign={"end"}
+              color={"green"}
+              fontWeight={"bold"}
+              fontSize={32}
+            >
               ${item.price}
             </Text>
           </Item>

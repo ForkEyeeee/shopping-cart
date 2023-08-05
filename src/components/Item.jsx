@@ -27,8 +27,10 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useRef } from "react";
 
 const Item = ({
   children,
@@ -38,7 +40,11 @@ const Item = ({
   setItemCount,
   itemId,
   handleAddCart,
+  handleClearItems,
 }) => {
+  const initialFocusRef = useRef();
+
+  console.log(children);
   return (
     <GridItem>
       <VStack className="test">
@@ -46,30 +52,40 @@ const Item = ({
           <CardBody>
             <Image src={image} alt={title} borderRadius="lg" />
             <Stack mt="6" spacing="3">
-              <Heading size="md">{children}</Heading>
+              <Text>{children}</Text>
             </Stack>
           </CardBody>
           <Divider />
           <CardFooter>
             <ButtonGroup spacing="2">
-              <Button _hover={{ bg: "#ffcccb" }}>Clear Items</Button>
-              <Popover>
+              <Button
+                _hover={{ bg: "#ffcccb" }}
+                onClick={(e) => handleClearItems(e, itemId)}
+              >
+                Clear Items
+              </Button>
+
+              <Popover initialFocusRef={initialFocusRef} placement="bottom">
                 <PopoverTrigger>
                   <Button variant="solid" colorScheme="blue">
                     Add to Cart
                   </Button>
                 </PopoverTrigger>
                 <Portal>
-                  <PopoverContent>
+                  <PopoverContent bg="blue.100" borderColor="blue.300">
                     <PopoverArrow />
-                    <PopoverHeader>{title}</PopoverHeader>
-                    <PopoverCloseButton />
+                    <Flex className="test">
+                      {/* <PopoverHeader>{title}</PopoverHeader> */}
+                      {/* <PopoverCloseButton bg="purple.500" /> */}
+                    </Flex>
                     <PopoverBody>
                       <NumberInput
+                        ref={initialFocusRef}
+                        float={"right"}
                         size="md"
                         maxW={24}
-                        defaultValue={15}
-                        min={10}
+                        defaultValue={0}
+                        min={0}
                         onChange={(e) => {
                           handleAddCart(e, itemId);
                         }}
@@ -81,7 +97,9 @@ const Item = ({
                         </NumberInputStepper>
                       </NumberInput>
                     </PopoverBody>
-                    <PopoverFooter>Select Quantity</PopoverFooter>
+                    <PopoverFooter textAlign={"center"}>
+                      Select Quantity
+                    </PopoverFooter>
                   </PopoverContent>
                 </Portal>
               </Popover>
