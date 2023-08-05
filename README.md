@@ -1,5 +1,3 @@
-Sure, we can add the Mock Service Worker (MSW) in the "Technology Stack" section and describe it in the "Features" section as it plays a crucial role in handling network requests for testing. Here's the updated readme:
-
 ---
 
 # Shopping Cart Project
