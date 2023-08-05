@@ -13,9 +13,32 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
+  Popover,
+  PopoverTrigger,
+  Portal,
+  PopoverContent,
+  PopoverArrow,
+  PopoverHeader,
+  PopoverCloseButton,
+  PopoverBody,
+  PopoverFooter,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
-const Item = ({ children, image, title }) => {
+const Item = ({
+  children,
+  image,
+  title,
+  itemCount,
+  setItemCount,
+  itemId,
+  handleAddCart,
+}) => {
   return (
     <GridItem>
       <VStack className="test">
@@ -29,12 +52,39 @@ const Item = ({ children, image, title }) => {
           <Divider />
           <CardFooter>
             <ButtonGroup spacing="2">
-              <Button variant="solid" colorScheme="blue">
-                Buy now
-              </Button>
-              <Button variant="ghost" colorScheme="blue">
-                Add to cart
-              </Button>
+              <Button _hover={{ bg: "#ffcccb" }}>Clear Items</Button>
+              <Popover>
+                <PopoverTrigger>
+                  <Button variant="solid" colorScheme="blue">
+                    Add to Cart
+                  </Button>
+                </PopoverTrigger>
+                <Portal>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverHeader>{title}</PopoverHeader>
+                    <PopoverCloseButton />
+                    <PopoverBody>
+                      <NumberInput
+                        size="md"
+                        maxW={24}
+                        defaultValue={15}
+                        min={10}
+                        onChange={(e) => {
+                          handleAddCart(e, itemId);
+                        }}
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                    </PopoverBody>
+                    <PopoverFooter>Select Quantity</PopoverFooter>
+                  </PopoverContent>
+                </Portal>
+              </Popover>
             </ButtonGroup>
           </CardFooter>
         </Card>
