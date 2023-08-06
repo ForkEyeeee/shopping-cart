@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
-import { Outlet } from "react-router-dom";
+import { BrowserRouter, Link, Outlet } from "react-router-dom";
 // import { worker } from "./test/mocks/browser";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -46,18 +46,19 @@ const App = () => {
       return cartItems.filter((item) => item.itemId === itemId)[0].count;
     }
   };
+
+  console.log(useLocation());
   return (
     <Box>
       <Navbar />
       <Hero />
-      {/* <Cart itemCount={itemCount} setItemCount={setItemCount} /> */}
-      {/* {useLocation().pathname === "/" && ( */}
-      <ItemList
-        handleAddCart={handleAddCart}
-        handleClearItems={handleClearItems}
-        itemQuantity={itemQuantity}
-      />
-      {/* )} */}
+      {useLocation().pathname === "/" && (
+        <ItemList
+          handleAddCart={handleAddCart}
+          handleClearItems={handleClearItems}
+          itemQuantity={itemQuantity}
+        />
+      )}
       <Outlet />
       <Footer />
     </Box>

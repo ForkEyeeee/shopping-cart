@@ -1,11 +1,14 @@
 import Hero from "./Hero";
-import FeaturedItems from "./ItemList";
+import Item from "./Item";
+import ItemList from "./ItemList";
+import NavBar from "./NavBar";
 
 const HomePage = () => {
   return (
     <>
+      <NavBar />
       <Hero />
-      <FeaturedItems />
+      <ItemList />
     </>
   );
 };
