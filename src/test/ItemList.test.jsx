@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import FeaturedItems from "../components/ItemList";
+import ItemList from "../components/ItemList";
 import { server } from "./mocks/server";
 import { handlers } from "./mocks/handlers";
 

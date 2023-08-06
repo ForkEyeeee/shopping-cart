@@ -40,6 +40,7 @@ const Item = ({
   itemId,
   handleAddCart,
   handleClearItems,
+  itemQuantity,
 }) => {
   // console.log(children);
   return (
@@ -52,10 +53,7 @@ const Item = ({
               <Box>{children}</Box>
             </Stack>
           </CardBody>
-          <Text>
-            {itemCount.find((item) => item.itemId === itemId) &&
-              itemCount.filter((item) => item.itemId === itemId)[0].count}
-          </Text>
+          <Text>{itemQuantity(itemId)}</Text>
           <Divider />
 
           <CardFooter>

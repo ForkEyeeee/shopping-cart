@@ -13,34 +13,12 @@ import PropTypes from "prop-types";
 import Item from "./Item";
 import useDataFetching from "../hooks/fetchItemData";
 
-const ItemList = ({ itemCount, setItemCount }) => {
+const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
 
   console.log(data);
-
-  const handleAddCart = (e, itemId) => {
-    if (itemCount.find((item) => item.itemId === itemId) !== undefined) {
-      setItemCount((prevState) =>
-        prevState.map((item) =>
-          item.itemId === itemId ? { ...item, count: Number(e) } : item
-        )
-      );
-    } else {
-      setItemCount((prevItems) => [...prevItems, { itemId, count: Number(e) }]);
-    }
-    return;
-  };
-
-  const handleClearItems = (itemId) => {
-    if (itemCount.find((item) => item.itemId === itemId) !== undefined) {
-      setItemCount((prevState) =>
-        prevState.filter((prevItem) => prevItem.itemId !== itemId)
-      );
-    }
-    return;
-  };
 
   if (loading)
     return (
@@ -71,11 +49,10 @@ const ItemList = ({ itemCount, setItemCount }) => {
             key={index}
             image={item.image}
             title={item.title}
-            itemCount={itemCount}
-            setItemCount={setItemCount}
             itemId={item.id}
             handleAddCart={handleAddCart}
             handleClearItems={handleClearItems}
+            itemQuantity={itemQuantity}
           >
             <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
               {item.title}
@@ -96,8 +73,9 @@ const ItemList = ({ itemCount, setItemCount }) => {
 };
 
 ItemList.propTypes = {
-  itemCount: PropTypes.object.isRequired,
-  setItemCount: PropTypes.func.isRequired,
+  handleAddCart: PropTypes.func.isRequired,
+  handleClearItems: PropTypes.func.isRequired,
+  itemQuantity: PropTypes.func.isRequired,
 };
 
 export default ItemList;
