@@ -52,13 +52,6 @@ const App = () => {
     <Box>
       <Navbar />
       <Hero />
-      {useLocation().pathname === "/" && (
-        <ItemList
-          handleAddCart={handleAddCart}
-          handleClearItems={handleClearItems}
-          itemQuantity={itemQuantity}
-        />
-      )}
       <Outlet />
       <Footer />
     </Box>
