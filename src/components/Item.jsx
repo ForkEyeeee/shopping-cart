@@ -42,7 +42,7 @@ const Item = ({
   handleClearItems,
   itemQuantity,
 }) => {
-  // console.log(children);
+  const count = typeof itemQuantity === "function" ? itemQuantity(itemId) : 0;
   return (
     <GridItem>
       <VStack className="test">
@@ -53,7 +53,7 @@ const Item = ({
               <Box>{children}</Box>
             </Stack>
           </CardBody>
-          <Text>{itemQuantity(itemId)}</Text>
+          <Text>{count}</Text>
           <Divider />
 
           <CardFooter>

@@ -1,6 +1,7 @@
-import { Box, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
+
 const Navbar = () => {
   return (
     <HStack justifyContent={"flex-end"} gap={5} pr={5} pb={3}>

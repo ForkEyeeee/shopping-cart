@@ -3,6 +3,7 @@ import App from "../App";
 import ErrorPage from "../components/ErrorPage";
 import AboutUs from "../components/AboutUs";
 import Cart from "../components/Cart";
+
 const Router = () => {
   const router = createBrowserRouter([
     {

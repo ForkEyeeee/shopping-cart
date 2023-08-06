@@ -44,12 +44,12 @@ const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
         </Heading>
       </Box>
       <Grid templateColumns="repeat(1, 1fr)" gap={20} p={5}>
-        {data.map((item, index) => (
+        {data.map((item) => (
           <Item
-            key={index}
+            key={item.id}
+            itemId={item.id}
             image={item.image}
             title={item.title}
-            itemId={item.id}
             handleAddCart={handleAddCart}
             handleClearItems={handleClearItems}
             itemQuantity={itemQuantity}

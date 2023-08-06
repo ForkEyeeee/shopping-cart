@@ -1,4 +1,4 @@
-import { getByRole, getByText, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ErrorPage from "../components/ErrorPage";
 

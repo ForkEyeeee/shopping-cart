@@ -5,7 +5,7 @@ import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import { Outlet } from "react-router-dom";
-import { worker } from "./test/mocks/browser";
+// import { worker } from "./test/mocks/browser";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Cart from "./components/Cart";
@@ -38,7 +38,7 @@ const App = () => {
     }
     return;
   };
-  console.log(useLocation());
+  // console.log(useLocation());
 
   const itemQuantity = (itemId) => {
     const cartItem = cartItems.find((item) => item.itemId === itemId);
@@ -51,13 +51,13 @@ const App = () => {
       <Navbar />
       <Hero />
       {/* <Cart itemCount={itemCount} setItemCount={setItemCount} /> */}
-      {useLocation().pathname === "/" && (
-        <ItemList
-          handleAddCart={handleAddCart}
-          handleClearItems={handleClearItems}
-          itemQuantity={itemQuantity}
-        />
-      )}
+      {/* {useLocation().pathname === "/" && ( */}
+      <ItemList
+        handleAddCart={handleAddCart}
+        handleClearItems={handleClearItems}
+        itemQuantity={itemQuantity}
+      />
+      {/* )} */}
       <Outlet />
       <Footer />
     </Box>
