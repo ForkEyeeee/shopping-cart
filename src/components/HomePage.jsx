@@ -1,5 +1,5 @@
 import Hero from "./Hero";
-import FeaturedItems from "./FeaturedItems";
+import FeaturedItems from "./ItemList";
 
 const HomePage = () => {
   return (

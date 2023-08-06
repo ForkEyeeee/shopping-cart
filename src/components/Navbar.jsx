@@ -7,7 +7,9 @@ const Navbar = () => {
       <ChakraLink as={ReactRouterLink} to="/">
         Home
       </ChakraLink>
-      <Box>Cart</Box>
+      <ChakraLink as={ReactRouterLink} to="/Cart">
+        Cart
+      </ChakraLink>
       <ChakraLink as={ReactRouterLink} to="/AboutUs">
         About Us
       </ChakraLink>

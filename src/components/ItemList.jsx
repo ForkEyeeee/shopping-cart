@@ -1,36 +1,42 @@
-import { Box, Grid, Image, Text, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  Image,
+  Text,
+  Heading,
+  Spinner,
+  Center,
+  HStack,
+} from "@chakra-ui/react";
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Item from "./Item";
 import useDataFetching from "../hooks/fetchItemData";
 
-const FeaturedItems = () => {
+const ItemList = ({ itemCount, setItemCount }) => {
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
-  const [itemCount, setItemCount] = useState([]);
+
+  console.log(data);
 
   const handleAddCart = (e, itemId) => {
-    const getItem = itemCount.filter((item) => item.itemId === itemId);
-    if (getItem.length > 0) {
+    if (itemCount.find((item) => item.itemId === itemId) !== undefined) {
       setItemCount((prevState) =>
         prevState.map((item) =>
           item.itemId === itemId ? { ...item, count: Number(e) } : item
         )
       );
-      console.log("zzzz");
-
-      return;
+    } else {
+      setItemCount((prevItems) => [...prevItems, { itemId, count: Number(e) }]);
     }
-    setItemCount((prevItems) => [...prevItems, { itemId, count: Number(e) }]);
+    return;
   };
 
-  const handleClearItems = (e, itemId) => {
-    const getItem = itemCount.filter((item) => item.itemId === itemId);
-    if (getItem.length > 0) {
+  const handleClearItems = (itemId) => {
+    if (itemCount.find((item) => item.itemId === itemId) !== undefined) {
       setItemCount((prevState) =>
-        prevState.map((item) =>
-          item.itemId === itemId ? { ...item, count: 0 } : item
-        )
+        prevState.filter((prevItem) => prevItem.itemId !== itemId)
       );
     }
     return;
@@ -38,21 +44,28 @@ const FeaturedItems = () => {
 
   if (loading)
     return (
-      <Box>
-        {" "}
-        {/* <Heading p={5} textAlign={"center"}>
-          Featured Items
-        </Heading> */}
-        Loading...
-      </Box>
+      <Center p={10}>
+        <HStack spacing={5}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+          <Text>Loading...</Text>
+        </HStack>
+      </Center>
     );
-  if (error) return <Box>Oops come back later</Box>;
+  if (error) return <Text>{error.message + " Oops come back later"}</Text>;
   return (
     <>
-      <Heading p={5} textAlign={"center"}>
-        Featured Items
-      </Heading>
-      <Grid templateColumns="repeat(1, 1fr)" gap={20} className="aaaa" p={5}>
+      <Box>
+        <Heading p={5} textAlign={"center"}>
+          Today&apos;s Stock
+        </Heading>
+      </Box>
+      <Grid templateColumns="repeat(1, 1fr)" gap={20} p={5}>
         {data.map((item, index) => (
           <Item
             key={index}
@@ -82,4 +95,9 @@ const FeaturedItems = () => {
   );
 };
 
-export default FeaturedItems;
+ItemList.propTypes = {
+  itemCount: PropTypes.object.isRequired,
+  setItemCount: PropTypes.func.isRequired,
+};
+
+export default ItemList;
