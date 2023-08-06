@@ -1,10 +1,12 @@
 import { Box, Heading } from "@chakra-ui/react";
 import useDataFetching from "../hooks/fetchItemData";
 
-const Cart = ({ itemCount, setItemCount }) => {
+const Cart = ({ cartItems }) => {
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
+
+  console.log(cartItems);
 
   // data.find((item) => item.)
 

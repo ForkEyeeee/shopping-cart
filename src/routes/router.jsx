@@ -14,6 +14,7 @@ const Router = () => {
       path: "/",
       element: <App />,
       children: [
+        { path: "/", element: <ItemList /> },
         { path: "/Cart", element: <Cart /> },
         { path: "/AboutUs", element: <AboutUs /> },
       ],
