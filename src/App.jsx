@@ -9,13 +9,17 @@ import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Cart from "./components/Cart";
-
+import useDataFetching from "./hooks/fetchItemData";
 if (process.env.NODE_ENV === "development") {
   // worker.start();
 }
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
+
+  const [data, loading, error] = useDataFetching(
+    "https://fakestoreapi.com/products/category/electronics"
+  );
 
   const handleAddCart = (e, itemId) => {
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
@@ -53,7 +57,15 @@ const App = () => {
       <Navbar />
       <Hero />
       <Outlet
-        context={{ itemQuantity, cartItems, handleAddCart, handleClearItems }}
+        context={{
+          itemQuantity,
+          cartItems,
+          handleAddCart,
+          handleClearItems,
+          data,
+          loading,
+          error,
+        }}
       />
       <Footer />
     </Box>

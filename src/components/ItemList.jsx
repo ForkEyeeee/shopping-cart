@@ -15,10 +15,14 @@ import useDataFetching from "../hooks/fetchItemData";
 import { useOutletContext } from "react-router-dom";
 
 const ItemList = () => {
-  const { itemQuantity, handleAddCart, handleClearItems } = useOutletContext();
-  const [data, loading, error] = useDataFetching(
-    "https://fakestoreapi.com/products/category/electronics"
-  );
+  const {
+    itemQuantity,
+    handleAddCart,
+    handleClearItems,
+    data,
+    loading,
+    error,
+  } = useOutletContext();
 
   if (loading)
     return (
