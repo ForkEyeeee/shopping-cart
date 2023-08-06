@@ -52,7 +52,12 @@ const Item = ({
               <Box>{children}</Box>
             </Stack>
           </CardBody>
+          <Text>
+            {itemCount.find((item) => item.itemId === itemId) &&
+              itemCount.filter((item) => item.itemId === itemId)[0].count}
+          </Text>
           <Divider />
+
           <CardFooter>
             <ButtonGroup spacing="2">
               <Button

@@ -1,3 +1,4 @@
+//handlers.js
 import { rest } from "msw";
 
 const itemsUrl = "https://fakestoreapi.com/products/category/electronics";
