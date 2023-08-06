@@ -60,7 +60,7 @@ const Item = ({
             <ButtonGroup spacing="2">
               <Button
                 _hover={{ bg: "#ffcccb" }}
-                onClick={(e) => handleClearItems(e, itemId)}
+                onClick={() => handleClearItems(itemId)}
               >
                 Clear Items
               </Button>
