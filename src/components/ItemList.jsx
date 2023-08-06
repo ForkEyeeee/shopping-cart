@@ -12,13 +12,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Item from "./Item";
 import useDataFetching from "../hooks/fetchItemData";
+import { useOutletContext } from "react-router-dom";
 
-const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
+const ItemList = () => {
+  const { itemQuantity, handleAddCart, handleClearItems } = useOutletContext();
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
-
-  console.log(data);
 
   if (loading)
     return (
@@ -72,10 +72,10 @@ const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
   );
 };
 
-ItemList.propTypes = {
-  handleAddCart: PropTypes.func.isRequired,
-  handleClearItems: PropTypes.func.isRequired,
-  itemQuantity: PropTypes.func.isRequired,
-};
+// ItemList.propTypes = {
+//   handleAddCart: PropTypes.func.isRequired,
+//   handleClearItems: PropTypes.func.isRequired,
+//   itemQuantity: PropTypes.func.isRequired,
+// };
 
 export default ItemList;

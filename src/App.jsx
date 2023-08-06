@@ -47,12 +47,14 @@ const App = () => {
     }
   };
 
-  console.log(useLocation());
+  // console.log(useLocation());
   return (
     <Box>
       <Navbar />
       <Hero />
-      <Outlet />
+      <Outlet
+        context={{ itemQuantity, cartItems, handleAddCart, handleClearItems }}
+      />
       <Footer />
     </Box>
   );

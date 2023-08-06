@@ -1,10 +1,12 @@
 import { Box, Heading } from "@chakra-ui/react";
 import useDataFetching from "../hooks/fetchItemData";
+import { useOutletContext } from "react-router-dom";
 
-const Cart = ({ cartItems }) => {
-  const [data, loading, error] = useDataFetching(
-    "https://fakestoreapi.com/products/category/electronics"
-  );
+const Cart = () => {
+  const { cartItems } = useOutletContext();
+  // const [data, loading, error] = useDataFetching(
+  //   "https://fakestoreapi.com/products/category/electronics"
+  // );
 
   console.log(cartItems);
 

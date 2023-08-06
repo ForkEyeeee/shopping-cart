@@ -8,7 +8,6 @@ import {
   GridItem,
   Stack,
   Text,
-  Heading,
   Divider,
   CardFooter,
   ButtonGroup,
@@ -18,8 +17,6 @@ import {
   Portal,
   PopoverContent,
   PopoverArrow,
-  PopoverHeader,
-  PopoverCloseButton,
   PopoverBody,
   PopoverFooter,
   NumberInput,
@@ -27,16 +24,13 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 const Item = ({
   children,
   image,
   title,
-  itemCount,
-  setItemCount,
   itemId,
   handleAddCart,
   handleClearItems,
@@ -108,6 +102,16 @@ const Item = ({
       </VStack>
     </GridItem>
   );
+};
+
+Item.propTypes = {
+  children: PropTypes.array.isRequired,
+  itemId: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  handleAddCart: PropTypes.func.isRequired,
+  handleClearItems: PropTypes.func.isRequired,
+  itemQuantity: PropTypes.func.isRequired,
 };
 
 export default Item;
