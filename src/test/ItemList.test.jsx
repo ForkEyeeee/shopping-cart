@@ -4,7 +4,7 @@ import ItemList from "../components/ItemList";
 import { server } from "./mocks/server";
 import { handlers } from "./mocks/handlers";
 
-describe("FeaturedItems", () => {
+describe("ListItems", () => {
   it("should call mock api", async () => {
     render(<ItemList />);
     const image = await screen.findByRole("img");

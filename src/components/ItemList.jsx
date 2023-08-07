@@ -1,28 +1,20 @@
 import {
   Box,
   Grid,
-  Image,
   Text,
   Heading,
   Spinner,
   Center,
   HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import Item from "./Item";
 import useDataFetching from "../hooks/fetchItemData";
-import { useOutletContext } from "react-router-dom";
 
-const ItemList = () => {
-  const {
-    itemQuantity,
-    handleAddCart,
-    handleClearItems,
-    data,
-    loading,
-    error,
-  } = useOutletContext();
+const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
+  const [data, loading, error] = useDataFetching(
+    "https://fakestoreapi.com/products/category/electronics"
+  );
 
   if (loading)
     return (
@@ -76,10 +68,10 @@ const ItemList = () => {
   );
 };
 
-// ItemList.propTypes = {
-//   handleAddCart: PropTypes.func.isRequired,
-//   handleClearItems: PropTypes.func.isRequired,
-//   itemQuantity: PropTypes.func.isRequired,
-// };
+ItemList.propTypes = {
+  handleAddCart: PropTypes.func.isRequired,
+  handleClearItems: PropTypes.func.isRequired,
+  itemQuantity: PropTypes.func.isRequired,
+};
 
 export default ItemList;

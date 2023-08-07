@@ -1,15 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
-import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
-import HomePage from "./components/HomePage";
-import { BrowserRouter, Link, Outlet } from "react-router-dom";
-// import { worker } from "./test/mocks/browser";
-import { useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import Cart from "./components/Cart";
 import useDataFetching from "./hooks/fetchItemData";
+
 if (process.env.NODE_ENV === "development") {
   // worker.start();
 }
@@ -42,7 +38,6 @@ const App = () => {
     }
     return;
   };
-  // console.log(useLocation());
 
   const itemQuantity = (itemId) => {
     const cartItem = cartItems.find((item) => item.itemId === itemId);
@@ -51,22 +46,11 @@ const App = () => {
     }
   };
 
-  // console.log(useLocation());
   return (
     <Box>
       <Navbar />
       <Hero />
-      <Outlet
-        context={{
-          itemQuantity,
-          cartItems,
-          handleAddCart,
-          handleClearItems,
-          data,
-          loading,
-          error,
-        }}
-      />
+      <Outlet />
       <Footer />
     </Box>
   );
