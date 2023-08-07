@@ -48,6 +48,7 @@ const ItemList = ({
             key={item.id}
             itemId={item.id}
             image={item.image}
+            desc={item.description}
             title={item.title}
             handleAddCart={handleAddCart}
             handleClearItems={handleClearItems}
@@ -56,6 +57,7 @@ const ItemList = ({
             <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
               {item.title}
             </Text>
+            <Text> {item.description}</Text>
             <Text
               textAlign={"end"}
               color={"green"}

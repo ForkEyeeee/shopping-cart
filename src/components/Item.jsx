@@ -31,6 +31,7 @@ const Item = ({
   children,
   image,
   title,
+  desc,
   itemId,
   handleAddCart,
   handleClearItems,
