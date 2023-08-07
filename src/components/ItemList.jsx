@@ -11,11 +11,14 @@ import PropTypes from "prop-types";
 import Item from "./Item";
 import useDataFetching from "../hooks/fetchItemData";
 
-const ItemList = ({ handleAddCart, handleClearItems, itemQuantity }) => {
-  const [data, loading, error] = useDataFetching(
-    "https://fakestoreapi.com/products/category/electronics"
-  );
-
+const ItemList = ({
+  handleAddCart,
+  handleClearItems,
+  itemQuantity,
+  loading,
+  error,
+  data,
+}) => {
   if (loading)
     return (
       <Center p={10}>

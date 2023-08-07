@@ -2,9 +2,14 @@ import { Box } from "@chakra-ui/react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
-import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
+import ItemList from "./components/ItemList";
+import Cart from "./components/Cart";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import AboutUs from "./components/AboutUs";
+import { useLocation } from "react-router-dom";
 
 if (process.env.NODE_ENV === "development") {
   // worker.start();
@@ -46,11 +51,49 @@ const App = () => {
     }
   };
 
+  const location = useLocation();
+
   return (
     <Box>
       <Navbar />
-      <Hero />
-      <Outlet />
+      {location.pathname === "/" && <Hero />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ItemList
+              handleAddCart={handleAddCart}
+              handleClearItems={handleClearItems}
+              itemQuantity={itemQuantity}
+              data={data}
+              loading={loading}
+              error={error}
+            />
+          }
+        />
+        <Route
+          path="/Cart"
+          element={
+            <Cart
+              handleAddCart={handleAddCart}
+              handleClearItems={handleClearItems}
+              itemQuantity={itemQuantity}
+              data={data}
+              cartItems={cartItems}
+            />
+          }
+        />
+        <Route
+          path="/AboutUs"
+          element={
+            <AboutUs
+              handleAddCart={handleAddCart}
+              handleClearItems={handleClearItems}
+              itemQuantity={itemQuantity}
+            />
+          }
+        />
+      </Routes>
       <Footer />
     </Box>
   );
