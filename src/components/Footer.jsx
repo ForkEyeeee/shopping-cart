@@ -1,31 +1,33 @@
-import { Box, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Link, Image, Spacer, HStack, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
     <Box
       as="footer"
-      role="contentinfo"
-      mx="auto"
-      maxW="7xl"
-      py="12px"
-      bg={"tomato"}
-      px={{ base: "4", md: "8" }}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      bg="gray.700"
+      px={8}
+      py={4}
+      color="white"
     >
-      <Text fontSize="sm" align="center" color={"white"} fontWeight={"bold"}>
-        &copy; {new Date().getFullYear()} Shopping Cart Project. All rights
-        reserved.
-      </Text>
-      <VStack
-        direction="row"
-        spacing="4"
-        align="center"
-        justify="center"
-        pt={5}
-      >
-        <Text color={"white"}>Terms and Conditions</Text>
-        <Text color={"white"}>Privacy Policy</Text>
-        <Text color={"white"}>Contact Us</Text>
-      </VStack>
+      <HStack align="center" fontSize="lg" fontWeight="semibold">
+        <Link
+          href="https://github.com/ForkEyeee"
+          isExternal
+          display="flex"
+          alignItems="center"
+          spacing={4}
+          _hover={{ textDecoration: "underline" }}
+        ></Link>
+        <Text>GitHub</Text>
+        <Image
+          src="src\assets\icons\github.png"
+          alt="github-image"
+          boxSize={8}
+        />
+      </HStack>
     </Box>
   );
 };

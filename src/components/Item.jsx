@@ -43,16 +43,24 @@ const Item = ({
       <VStack className="test">
         <Card maxW="sm">
           <CardBody>
-            <Image src={image} alt={title} borderRadius="lg" />
+            <Image boxSize={300} src={image} alt={title} borderRadius="lg" />
             <Stack mt="6" spacing="3">
               <Box>{children}</Box>
             </Stack>
           </CardBody>
-          <Text>{count}</Text>
+          <Text
+            fontSize="sm"
+            fontWeight="medium"
+            p={1}
+            bg="blue.50"
+            borderRadius="sm"
+          >
+            Qty: {count}
+          </Text>
           <Divider />
 
-          <CardFooter>
-            <ButtonGroup spacing="2">
+          <CardFooter justifyContent={"center"}>
+            <ButtonGroup spacing="2" className="test">
               <Button
                 _hover={{ bg: "#ffcccb" }}
                 onClick={() => handleClearItems(itemId)}

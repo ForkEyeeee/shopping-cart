@@ -43,7 +43,16 @@ const ItemList = ({
           Today&apos;s Stock
         </Heading>
       </Box>
-      <Grid templateColumns="repeat(1, 1fr)" gap={20} p={5}>
+      <Grid
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+          xl: "repeat(3, 1fr)",
+        }}
+        gap={20}
+        p={5}
+        className="aaw"
+      >
         {data &&
           data.map((item) => (
             <Item
@@ -56,7 +65,7 @@ const ItemList = ({
               handleClearItems={handleClearItems}
               itemQuantity={itemQuantity}
             >
-              <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
+              <Text p={5} fontWeight={"semibold"} fontSize={"md"} noOfLines={2}>
                 {item.title}
               </Text>
               <Text> {}</Text>

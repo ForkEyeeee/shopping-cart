@@ -15,7 +15,10 @@ const NavBar = () => {
       right="0"
       zIndex="1000"
     >
-      <HStack justifyContent={"flex-end"} spacing={3}>
+      <HStack
+        justifyContent={{ base: "flex-end", md: "space-around" }}
+        spacing={3}
+      >
         <ChakraLinkWrapper to="/" icon={FaHome} label="Home" />
         <ChakraLinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
         <ChakraLinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
