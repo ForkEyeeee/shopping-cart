@@ -34,7 +34,7 @@ const ItemList = ({
         </HStack>
       </Center>
     );
-  if (error) return <Text>{error.message + " Oops come back later"}</Text>;
+  if (error) return <Text>Oops</Text>;
   return (
     <>
       <Box>
@@ -43,31 +43,32 @@ const ItemList = ({
         </Heading>
       </Box>
       <Grid templateColumns="repeat(1, 1fr)" gap={20} p={5}>
-        {data.map((item) => (
-          <Item
-            key={item.id}
-            itemId={item.id}
-            image={item.image}
-            desc={item.description}
-            title={item.title}
-            handleAddCart={handleAddCart}
-            handleClearItems={handleClearItems}
-            itemQuantity={itemQuantity}
-          >
-            <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
-              {item.title}
-            </Text>
-            <Text> {}</Text>
-            <Text
-              textAlign={"end"}
-              color={"green"}
-              fontWeight={"bold"}
-              fontSize={32}
+        {data &&
+          data.map((item) => (
+            <Item
+              key={item.id}
+              itemId={item.id}
+              image={item.image}
+              desc={item.description}
+              title={item.title}
+              handleAddCart={handleAddCart}
+              handleClearItems={handleClearItems}
+              itemQuantity={itemQuantity}
             >
-              ${item.price}
-            </Text>
-          </Item>
-        ))}
+              <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
+                {item.title}
+              </Text>
+              <Text> {}</Text>
+              <Text
+                textAlign={"end"}
+                color={"green"}
+                fontWeight={"bold"}
+                fontSize={32}
+              >
+                ${item.price}
+              </Text>
+            </Item>
+          ))}
       </Grid>
     </>
   );

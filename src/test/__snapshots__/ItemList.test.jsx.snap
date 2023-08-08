@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`useDataFetching Hook > fetches electronic products and matches the snapshot 1`] = `
+[
+  {
+    "description": "Description for Electronic Product 1",
+    "id": 1,
+    "image": "src/assets/mock-image.jpg",
+    "price": 299.99,
+    "title": "Electronic Product 1",
+  },
+  {
+    "description": "Description for Electronic Product 2",
+    "id": 2,
+    "image": "src/assets/mock-image.jpg",
+    "price": 399.99,
+    "title": "Electronic Product 2",
+  },
+  {
+    "description": "Description for Electronic Product 3",
+    "id": 3,
+    "image": "src/assets/mock-image.jpg",
+    "price": 499.99,
+    "title": "Electronic Product 3",
+  },
+  {
+    "description": "Description for Electronic Product 4",
+    "id": 4,
+    "image": "src/assets/mock-image.jpg",
+    "price": 599.99,
+    "title": "Electronic Product 4",
+  },
+  {
+    "description": "Description for Electronic Product 5",
+    "id": 5,
+    "image": "src/assets/mock-image.jpg",
+    "price": 699.99,
+    "title": "Electronic Product 5",
+  },
+  {
+    "description": "Description for Electronic Product 6",
+    "id": 6,
+    "image": "src/assets/mock-image.jpg",
+    "price": 799.99,
+    "title": "Electronic Product 6",
+  },
+]
+`;

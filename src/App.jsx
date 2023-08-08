@@ -7,7 +7,6 @@ import useDataFetching from "./hooks/fetchItemData";
 import ItemList from "./components/ItemList";
 import Cart from "./components/Cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import AboutUs from "./components/AboutUs";
 import { useLocation } from "react-router-dom";
 
