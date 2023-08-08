@@ -1,19 +1,21 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, findByText } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import NavBar from "../components/NavBar";
 
-import Navbar from "../components/NavBar";
-
-describe("Navbar", () => {
-  it("renders Navbar Component", async () => {
+describe("NavBar", () => {
+  it("renders NavBar Component", async () => {
     render(
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
+      <ChakraProvider>
+        <BrowserRouter>
+          <NavBar />
+        </BrowserRouter>
+      </ChakraProvider>
     );
     const home = screen.getByText("Home");
     const shoppingCart = screen.getByText("Cart");
-    const aboutUs = screen.getByText("About Us");
+    const aboutUs = screen.getByText("About");
     expect(home).toBeVisible();
     expect(shoppingCart).toBeVisible();
     expect(aboutUs).toBeVisible();

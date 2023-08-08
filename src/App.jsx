@@ -82,16 +82,7 @@ const App = () => {
             />
           }
         />
-        <Route
-          path="/AboutUs"
-          element={
-            <AboutUs
-              handleAddCart={handleAddCart}
-              handleClearItems={handleClearItems}
-              itemQuantity={itemQuantity}
-            />
-          }
-        />
+        <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
       <Footer />
     </Box>

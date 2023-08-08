@@ -5,7 +5,9 @@ import Footer from "../components/Footer";
 describe("Footer", () => {
   it("renders Footer Component", () => {
     render(<Footer />);
-    const footerText = screen.getByText("Contact Us");
+    const footerImg = screen.getByRole("img");
+    const footerText = screen.getByText("GitHub");
+    expect(footerImg).toBeVisible();
     expect(footerText).toBeVisible();
   });
 });
