@@ -19,6 +19,7 @@ const ItemList = ({
   error,
   data,
 }) => {
+  console.log(error + "#############");
   if (loading)
     return (
       <Center p={10}>
@@ -34,7 +35,7 @@ const ItemList = ({
         </HStack>
       </Center>
     );
-  if (error) return <Text>Oops</Text>;
+  if (error) return <Text data-testid="error-message">Oops</Text>;
   return (
     <>
       <Box>

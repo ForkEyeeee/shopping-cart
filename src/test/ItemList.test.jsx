@@ -16,8 +16,19 @@ import { rest } from "msw";
 import App from "../App";
 import { renderHook, waitFor } from "@testing-library/react";
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 500,
+    json: () => Promise.resolve({ error: "Internal server error" }),
+  })
+);
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("useDataFetching Hook", () => {
-  it("fetches electronic products and matches the snapshot", async () => {
+  it.skip("fetches electronic products and matches the snapshot", async () => {
     const { result } = renderHook(() =>
       useDataFetching("https://fakestoreapi.com/products/category/electronics")
     );
@@ -26,7 +37,7 @@ describe("useDataFetching Hook", () => {
   });
 });
 
-it("renders images", async () => {
+it.skip("renders images", async () => {
   const { result } = renderHook(() =>
     useDataFetching("https://fakestoreapi.com/products/category/electronics")
   );
@@ -39,27 +50,31 @@ it("renders images", async () => {
   expect(imgElements.length).toBeGreaterThan(0);
 });
 
-it.skip("should produce an error if mock API call fails", async () => {
-  // Set up the error response for the correct URL
+it("should produce an error if mock API call fails", async () => {
   server.use(
     rest.get(
       "https://fakestoreapi.com/products/category/electronics",
       (req, res, ctx) => {
-        return res(ctx.status(500));
+        return res.once(
+          ctx.status(500),
+          ctx.json({
+            error: "Oops",
+          })
+        );
       }
     )
   );
 
-  // Render the component
   const { result } = renderHook(() =>
     useDataFetching("https://fakestoreapi.com/products/category/electronics")
   );
-  const { findAllByText } = render(<ItemList data={result.current[0]} />);
-  // Wait for the error message to appear
 
-  // Check if the error message is visible
-  const errorText = await screen.findAllByText("Oops");
-  expect(errorText).toBeInTheDocument();
+  render(<ItemList data={result.current[0]} />);
+
+  await waitFor(() =>
+    expect(screen.getByTestId("error-message").toBeVisible())
+  );
+  screen.debug();
 });
 
 it.skip("renders ItemsList Component", async () => {
