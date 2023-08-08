@@ -1,7 +1,8 @@
 import { Box, Image, Flex, Heading, Text, Button } from "@chakra-ui/react";
 
 const CartItem = ({ image, title, description, price, cartItems, itemId }) => {
-  const count = cartItems.find((item) => (item.itemId = itemId)).count;
+  const count = cartItems.filter((cartItem) => cartItem.itemId === itemId)[0]
+    .count;
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden" m={4}>
       <Flex>
@@ -25,14 +26,7 @@ const CartItem = ({ image, title, description, price, cartItems, itemId }) => {
             </Box>
             <Box>
               <Text fontSize="xl">${price}</Text>
-              <Button
-                colorScheme="red"
-                size="sm"
-                mt={2}
-                onClick={() => {
-                  /* function to remove item from cart */
-                }}
-              >
+              <Button colorScheme="red" size="sm" mt={2} onClick={() => {}}>
                 Remove
               </Button>
             </Box>

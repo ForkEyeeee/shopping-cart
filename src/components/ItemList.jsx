@@ -57,7 +57,7 @@ const ItemList = ({
             <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
               {item.title}
             </Text>
-            <Text> {item.description}</Text>
+            <Text> {}</Text>
             <Text
               textAlign={"end"}
               color={"green"}
