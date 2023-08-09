@@ -1,12 +1,11 @@
-import { Box, filter } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
-import ItemList from "./components/HomeItemList";
 import Cart from "./components/Cart";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import { useLocation } from "react-router-dom";
 import HomeItemList from "./components/HomeItemList";
@@ -26,15 +25,17 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const getItems = localStorage.getItem("cartItems");
-    const getTotalPrice = localStorage.getItem("totalPrice");
-    if (getItems !== null) {
-      setCartItems(JSON.parse(getItems));
-      setTotalPrice(JSON.parse(getTotalPrice));
+    //set cartItems and set totalPrice on initial mount
+    const localCartItems = localStorage.getItem("cartItems");
+    const localTotalPrice = localStorage.getItem("totalPrice");
+    if (localCartItems !== null) {
+      setCartItems(JSON.parse(localCartItems));
+      setTotalPrice(JSON.parse(localTotalPrice));
     }
   }, []);
 
   useEffect(() => {
+    //if we have cartItems, then add them to local storage whenever cartItems or totalPrice state changes
     if (cartItems.length > 0) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
@@ -42,29 +43,31 @@ const App = () => {
   }, [cartItems, totalPrice]);
 
   useEffect(() => {
-    // calc total price
+    // calculate and set the total price, whenever cartItems, data, or totalPrice changes
     if (!data) return;
-    let filteredCartItems = [];
     const filterCart = () => {
+      const filteredCartItems = [];
       for (let i = 0; i < cartItems.length; i++) {
         filteredCartItems.push(
           data.find((item) => item.id === cartItems[i].itemId)
         );
       }
+      return filteredCartItems;
     };
-    filterCart();
-    const result = filteredCartItems.reduce((acc, obj) => {
+    console.log(filterCart());
+    const newTotalPrice = filterCart().reduce((acc, currItem) => {
       return (
-        acc + obj.price * cartItems.find((item) => item.itemId === obj.id).count
+        acc +
+        currItem.price *
+          cartItems.find((item) => item.itemId === currItem.id).count
       );
     }, 0);
-    setTotalPrice(result);
-    localStorage.setItem("totalPrice", JSON.stringify(result));
-
-    return () => {};
+    setTotalPrice(newTotalPrice);
+    localStorage.setItem("totalPrice", JSON.stringify(newTotalPrice));
   }, [cartItems, data, totalPrice]);
 
   useEffect(() => {
+    //calc totalitems when cartItems changes
     const result = cartItems.reduce((acc, obj) => {
       return acc + obj.count;
     }, 0);
@@ -74,12 +77,11 @@ const App = () => {
   }, [cartItems]);
 
   const handleAddCart = (e, itemId) => {
-    if (e === 0) {
-      const getItem = JSON.parse(localStorage.getItem("cartItems"));
-      getItem.filter((item) => item.itemId !== itemId);
-      localStorage.setItem("cartItems", JSON.stringify(getItem));
-      setCartItems(getItem);
-    }
+    const getItem = JSON.parse(localStorage.getItem("cartItems"));
+    getItem.filter((item) => item.itemId !== itemId);
+    localStorage.setItem("cartItems", JSON.stringify(getItem));
+    setCartItems(getItem);
+
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
       setCartItems((prevState) =>
         prevState.map((item) =>
@@ -93,24 +95,25 @@ const App = () => {
   };
 
   const handleClearItems = (itemId) => {
-    const getItems = cartItems.find((item) => item.itemId === itemId);
-    const removedItems = cartItems.filter((item) => item.itemId !== itemId);
-    if (getItems !== undefined) {
-      setCartItems(removedItems);
-      localStorage.setItem("cartItems", JSON.stringify(removedItems));
-    }
-    const getItem = JSON.parse(localStorage.getItem("cartItems"));
-    getItem.filter((item) => item.itemId !== itemId);
-    localStorage.setItem("cartItems", JSON.stringify(getItem));
-    console.log(totalPrice);
+    const currentItem = cartItems.find((item) => item.itemId === itemId);
+    const filteredCartItems = cartItems.filter(
+      (item) => item.itemId !== itemId
+    );
 
+    if (currentItem !== undefined) {
+      setCartItems(filteredCartItems);
+      localStorage.setItem("cartItems", JSON.stringify(filteredCartItems));
+    }
     return;
   };
 
   const itemQuantity = (itemId) => {
     const cartItem = cartItems.find((item) => item.itemId === itemId);
     if (cartItem !== undefined) {
-      return cartItems.filter((item) => item.itemId === itemId)[0].count;
+      const cartItemCount = cartItems.filter(
+        (item) => item.itemId === itemId
+      )[0].count;
+      return cartItemCount;
     }
   };
 

@@ -69,7 +69,11 @@ const HomeItem = ({
 
               <Popover placement="bottom">
                 <PopoverTrigger>
-                  <Button variant="solid" colorScheme="blue">
+                  <Button
+                    variant="solid"
+                    colorScheme="blue"
+                    // onClick={() => itemId === 0 && handleAddCart(0, itemId)}
+                  >
                     Add to Cart
                   </Button>
                 </PopoverTrigger>
