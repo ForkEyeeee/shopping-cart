@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import { useLocation } from "react-router-dom";
+import HomeItemList from "./components/HomeItemList";
 
 if (process.env.NODE_ENV === "development") {
   // worker.start();
@@ -90,7 +91,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <ItemList
+            <HomeItemList
               handleAddCart={handleAddCart}
               handleClearItems={handleClearItems}
               itemQuantity={itemQuantity}

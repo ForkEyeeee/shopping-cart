@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Cart = ({ data, cartItems }) => {
   let filteredCartItems = [];
-
+  console.log(data);
   const filterCart = () => {
     for (let i = 0; i < cartItems.length; i++) {
       filteredCartItems.push(
@@ -23,7 +23,9 @@ const Cart = ({ data, cartItems }) => {
           itemId={item.id}
           image={item.image}
           title={item.title}
-          cartItems={cartItems}
+          count={
+            cartItems.filter((cartItem) => cartItem.itemId === item.id)[0].count
+          }
           description={item.description}
           price={item.price}
         >

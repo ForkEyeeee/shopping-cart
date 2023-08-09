@@ -12,14 +12,14 @@ describe("LinkWrapper", () => {
         <BrowserRouter>
           <LinkWrapper to="/" icon={FaHome} label="Home" />
           <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
-          <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />{" "}
+          <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
         </BrowserRouter>
       </ChakraProvider>
     );
 
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
       "href",
-      "/"s
+      "/"
     );
     expect(screen.getByRole("link", { name: "Cart" })).toHaveAttribute(
       "href",

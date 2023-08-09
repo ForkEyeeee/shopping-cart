@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const NavBar = ({ totalItems, totalPrice }) => {
   return (
     <Box
-      bgGradient={"linear(to-r, blue.400, blue.600)"}
+      bgGradient="linear(to-r, blue.400, blue.600)"
       p={3}
       color="white"
       shadow="lg"
@@ -27,7 +27,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
             {totalItems}
           </Badge>
           <Text fontSize="1em" ml={2} fontWeight="bold">
-            ${totalPrice.toFixed(2)}
+            ${totalPrice ? totalPrice.toFixed(2) : 0}
           </Text>
         </HStack>
 
@@ -39,7 +39,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
 
 NavBar.propTypes = {
   totalItems: PropTypes.number.isRequired,
-  totalPrice: PropTypes.number.isRequired,
+  totalPrice: PropTypes.number,
 };
 
 export default NavBar;
