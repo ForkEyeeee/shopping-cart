@@ -74,7 +74,7 @@ const HomeItem = ({
                   </Button>
                 </PopoverTrigger>
                 <Portal>
-                  <PopoverContent bg="blue.100" borderColor="blue.300">
+                  <PopoverContent>
                     <PopoverArrow />
                     <Flex className="test">
                       {/* <PopoverHeader>{title}</PopoverHeader> */}
@@ -86,6 +86,7 @@ const HomeItem = ({
                         size="md"
                         maxW={24}
                         defaultValue={0}
+                        value={count}
                         min={0}
                         onChange={(e) => {
                           handleAddCart(e, itemId);
@@ -114,7 +115,7 @@ const HomeItem = ({
 
 HomeItem.propTypes = {
   children: PropTypes.array.isRequired,
-  itemId: PropTypes.number.isRequired,
+  itemId: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   handleAddCart: PropTypes.func.isRequired,

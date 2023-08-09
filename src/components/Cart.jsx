@@ -2,7 +2,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import CartItem from "./CartItem";
 import PropTypes from "prop-types";
 
-const Cart = ({ data, cartItems }) => {
+const Cart = ({ data, cartItems, handleAddCart, handleClearItems }) => {
   let filteredCartItems = [];
   console.log(data);
   const filterCart = () => {
@@ -28,6 +28,8 @@ const Cart = ({ data, cartItems }) => {
           }
           description={item.description}
           price={item.price}
+          handleAddCart={handleAddCart}
+          handleClearItems={handleClearItems}
         >
           <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
             {item.title}
@@ -49,6 +51,8 @@ const Cart = ({ data, cartItems }) => {
 Cart.propTypes = {
   data: PropTypes.array,
   cartItems: PropTypes.array,
+  handleAddCart: PropTypes.func.isRequired,
+  handleClearItems: PropTypes.func.isRequired,
 };
 
 export default Cart;

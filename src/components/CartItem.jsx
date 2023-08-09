@@ -1,7 +1,28 @@
-import { Box, Image, Flex, Heading, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  NumberInput,
+  NumberInputStepper,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInputField,
+} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
-const CartItem = ({ image, title, description, price, count }) => {
+const CartItem = ({
+  image,
+  title,
+  description,
+  price,
+  count,
+  itemId,
+  handleAddCart,
+  handleClearItems,
+}) => {
   return (
     <Flex
       borderWidth="1px"
@@ -37,9 +58,33 @@ const CartItem = ({ image, title, description, price, count }) => {
               {description}
             </Text>
             <Text fontSize="xl">${price}</Text>
-            <Button colorScheme="red" size="sm" mt={2} onClick={() => {}}>
+            <Button
+              colorScheme="red"
+              size="sm"
+              mt={2}
+              onClick={() => {
+                handleClearItems(itemId);
+              }}
+            >
               Remove
             </Button>
+            <NumberInput
+              float={"right"}
+              size="md"
+              maxW={24}
+              defaultValue={0}
+              value={count}
+              min={0}
+              onChange={(e) => {
+                handleAddCart(e, itemId);
+              }}
+            >
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
           </Box>
           <Box></Box>
         </Flex>
@@ -53,6 +98,10 @@ CartItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  itemId: PropTypes.string.isRequired,
+  handleAddCart: PropTypes.func.isRequired,
+  handleClearItems: PropTypes.func.isRequired,
 };
 
 export default CartItem;
