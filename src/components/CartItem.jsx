@@ -72,9 +72,9 @@ const CartItem = ({
               float={"right"}
               size="md"
               maxW={24}
-              defaultValue={0}
+              defaultValue={1}
               value={count}
-              min={0}
+              min={1}
               onChange={(e) => {
                 handleAddCart(e, itemId);
               }}

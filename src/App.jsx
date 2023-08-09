@@ -26,17 +26,23 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const getItems = localStorage.getItem("cartId");
-    if (getItems !== null) setCartItems(JSON.parse(getItems));
+    const getItems = localStorage.getItem("cartItems");
+    const getTotalPrice = localStorage.getItem("totalPrice");
+    if (getItems !== null) {
+      setCartItems(JSON.parse(getItems));
+      setTotalPrice(JSON.parse(getTotalPrice));
+    }
   }, []);
 
   useEffect(() => {
-    if (cartItems.length > 0)
-      localStorage.setItem("cartId", JSON.stringify(cartItems));
-  }, [cartItems]);
-  console.log(cartItems);
+    if (cartItems.length > 0) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    }
+  }, [cartItems, totalPrice]);
 
   useEffect(() => {
+    // calc total price
     if (!data) return;
     let filteredCartItems = [];
     const filterCart = () => {
@@ -53,7 +59,8 @@ const App = () => {
       );
     }, 0);
     setTotalPrice(result);
-    console.log(totalPrice);
+    localStorage.setItem("totalPrice", JSON.stringify(result));
+
     return () => {};
   }, [cartItems, data, totalPrice]);
 
@@ -67,6 +74,12 @@ const App = () => {
   }, [cartItems]);
 
   const handleAddCart = (e, itemId) => {
+    if (e === 0) {
+      const getItem = JSON.parse(localStorage.getItem("cartItems"));
+      getItem.filter((item) => item.itemId !== itemId);
+      localStorage.setItem("cartItems", JSON.stringify(getItem));
+      setCartItems(getItem);
+    }
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
       setCartItems((prevState) =>
         prevState.map((item) =>
@@ -80,11 +93,17 @@ const App = () => {
   };
 
   const handleClearItems = (itemId) => {
-    if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
-      setCartItems((prevState) =>
-        prevState.filter((prevItem) => prevItem.itemId !== itemId)
-      );
+    const getItems = cartItems.find((item) => item.itemId === itemId);
+    const removedItems = cartItems.filter((item) => item.itemId !== itemId);
+    if (getItems !== undefined) {
+      setCartItems(removedItems);
+      localStorage.setItem("cartItems", JSON.stringify(removedItems));
     }
+    const getItem = JSON.parse(localStorage.getItem("cartItems"));
+    getItem.filter((item) => item.itemId !== itemId);
+    localStorage.setItem("cartItems", JSON.stringify(getItem));
+    console.log(totalPrice);
+
     return;
   };
 

@@ -27,10 +27,9 @@ const NavBar = ({ totalItems, totalPrice }) => {
             {totalItems}
           </Badge>
           <Text fontSize="1em" ml={2} fontWeight="bold">
-            ${totalPrice ? totalPrice.toFixed(2) : 0}
+            ${totalPrice.toFixed(2)}
           </Text>
         </HStack>
-
         <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
       </HStack>
     </Box>
