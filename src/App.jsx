@@ -19,20 +19,24 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
+  const location = useLocation();
 
   useEffect(() => {
-    const result = cartItems.reduce((acc, obj) => {
-      return acc + obj.count;
-    }, 0);
-    setTotalItems(result);
+    const getItems = localStorage.getItem("cartId");
+    setCartItems(JSON.parse(getItems));
+  }, []);
 
-    return () => {};
+  useEffect(() => {
+    if (cartItems.length > 0)
+      localStorage.setItem("cartId", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
+    if (!data) return;
     let filteredCartItems = [];
     const filterCart = () => {
       for (let i = 0; i < cartItems.length; i++) {
@@ -51,6 +55,15 @@ const App = () => {
     console.log(totalPrice);
     return () => {};
   }, [cartItems, data, totalPrice]);
+
+  useEffect(() => {
+    const result = cartItems.reduce((acc, obj) => {
+      return acc + obj.count;
+    }, 0);
+    setTotalItems(result);
+
+    return () => {};
+  }, [cartItems]);
 
   const handleAddCart = (e, itemId) => {
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
@@ -80,8 +93,6 @@ const App = () => {
       return cartItems.filter((item) => item.itemId === itemId)[0].count;
     }
   };
-
-  const location = useLocation();
 
   return (
     <Box>

@@ -99,7 +99,7 @@ CartItem.propTypes = {
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
-  itemId: PropTypes.string.isRequired,
+  itemId: PropTypes.number.isRequired,
   handleAddCart: PropTypes.func.isRequired,
   handleClearItems: PropTypes.func.isRequired,
 };

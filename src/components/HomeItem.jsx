@@ -115,7 +115,7 @@ const HomeItem = ({
 
 HomeItem.propTypes = {
   children: PropTypes.array.isRequired,
-  itemId: PropTypes.string.isRequired,
+  itemId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   handleAddCart: PropTypes.func.isRequired,
