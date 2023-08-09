@@ -20,8 +20,9 @@ const Footer = () => {
           alignItems="center"
           spacing={4}
           _hover={{ textDecoration: "underline" }}
-        ></Link>
-        <Text>GitHub</Text>
+        >
+          <Text>GitHub</Text>
+        </Link>
         <Image
           src="src\assets\icons\github.png"
           alt="github-image"

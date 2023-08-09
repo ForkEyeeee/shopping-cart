@@ -143,6 +143,8 @@ const App = () => {
               handleClearItems={handleClearItems}
               itemQuantity={itemQuantity}
               data={data}
+              loading={loading}
+              error={error}
               cartItems={cartItems}
             />
           }

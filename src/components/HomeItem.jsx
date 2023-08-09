@@ -52,7 +52,8 @@ const HomeItem = ({
             fontWeight="medium"
             p={1}
             bg="blue.50"
-            borderRadius="sm"
+            width={"fit-content"}
+            borderRadius={5}
           >
             Qty: {count}
           </Text>
