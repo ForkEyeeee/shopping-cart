@@ -27,13 +27,14 @@ const App = () => {
 
   useEffect(() => {
     const getItems = localStorage.getItem("cartId");
-    setCartItems(JSON.parse(getItems));
+    if (getItems !== null) setCartItems(JSON.parse(getItems));
   }, []);
 
   useEffect(() => {
     if (cartItems.length > 0)
       localStorage.setItem("cartId", JSON.stringify(cartItems));
   }, [cartItems]);
+  console.log(cartItems);
 
   useEffect(() => {
     if (!data) return;
