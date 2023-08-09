@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
 import Cart from "./components/Cart";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import { useLocation } from "react-router-dom";
 import HomeItemList from "./components/HomeItemList";
