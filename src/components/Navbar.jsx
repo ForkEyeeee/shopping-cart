@@ -1,8 +1,9 @@
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, Badge, Text } from "@chakra-ui/react"; // Import Text
 import LinkWrapper from "./LinkWrapper";
 import { FaHome, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-const NavBar = () => {
+const NavBar = ({ totalItems, totalPrice }) => {
   return (
     <Box
       bgGradient={"linear(to-r, blue.400, blue.600)"}
@@ -20,11 +21,25 @@ const NavBar = () => {
         spacing={3}
       >
         <LinkWrapper to="/" icon={FaHome} label="Home" />
-        <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
+        <HStack spacing={1}>
+          <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
+          <Badge colorScheme="red" fontSize="0.8em">
+            {totalItems}
+          </Badge>
+          <Text fontSize="1em" ml={2} fontWeight="bold">
+            ${totalPrice.toFixed(2)}
+          </Text>
+        </HStack>
+
         <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
       </HStack>
     </Box>
   );
+};
+
+NavBar.propTypes = {
+  totalItems: PropTypes.number.isRequired,
+  totalPrice: PropTypes.number.isRequired,
 };
 
 export default NavBar;

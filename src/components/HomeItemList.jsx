@@ -18,7 +18,6 @@ const HomeItemList = ({
   error,
   data,
 }) => {
-  console.log(error + "#############");
   if (loading)
     return (
       <Center p={10}>

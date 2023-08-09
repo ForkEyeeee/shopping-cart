@@ -1,8 +1,8 @@
-import { Box } from "@chakra-ui/react";
+import { Box, filter } from "@chakra-ui/react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
 import ItemList from "./components/HomeItemList";
 import Cart from "./components/Cart";
@@ -16,10 +16,40 @@ if (process.env.NODE_ENV === "development") {
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
-
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [data, loading, error] = useDataFetching(
     "https://fakestoreapi.com/products/category/electronics"
   );
+
+  useEffect(() => {
+    const result = cartItems.reduce((acc, obj) => {
+      return acc + obj.count;
+    }, 0);
+    setTotalItems(result);
+
+    return () => {};
+  }, [cartItems]);
+
+  useEffect(() => {
+    let filteredCartItems = [];
+    const filterCart = () => {
+      for (let i = 0; i < cartItems.length; i++) {
+        filteredCartItems.push(
+          data.find((item) => item.id === cartItems[i].itemId)
+        );
+      }
+    };
+    filterCart();
+    const result = filteredCartItems.reduce((acc, obj) => {
+      return (
+        acc + obj.price * cartItems.find((item) => item.itemId === obj.id).count
+      );
+    }, 0);
+    setTotalPrice(result);
+    console.log(totalPrice);
+    return () => {};
+  }, [cartItems, data, totalPrice]);
 
   const handleAddCart = (e, itemId) => {
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
@@ -54,7 +84,7 @@ const App = () => {
 
   return (
     <Box>
-      <Navbar />
+      <Navbar totalItems={totalItems} totalPrice={totalPrice} />
       {location.pathname === "/" && <Hero />}
       <Routes>
         <Route
