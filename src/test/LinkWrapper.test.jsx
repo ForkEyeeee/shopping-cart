@@ -19,7 +19,7 @@ describe("LinkWrapper", () => {
 
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
       "href",
-      "/"
+      "/"s
     );
     expect(screen.getByRole("link", { name: "Cart" })).toHaveAttribute(
       "href",

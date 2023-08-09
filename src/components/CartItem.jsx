@@ -1,8 +1,11 @@
 import { Box, Image, Flex, Heading, Text, Button } from "@chakra-ui/react";
+import PropTypes from "prop-types";
 
 const CartItem = ({ image, title, description, price, cartItems, itemId }) => {
-  const count = cartItems.filter((cartItem) => cartItem.itemId === itemId)[0]
-    .count;
+  const count =
+    typeof cartItems === "object"
+      ? cartItems.filter((cartItem) => cartItem.itemId === itemId)[0]
+      : (0).count;
   return (
     <Flex
       borderWidth="1px"
@@ -47,6 +50,20 @@ const CartItem = ({ image, title, description, price, cartItems, itemId }) => {
       </Box>
     </Flex>
   );
+};
+
+CartItem.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      itemId: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  itemId: PropTypes.number.isRequired,
 };
 
 export default CartItem;

@@ -8,10 +8,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import Item from "./Item";
-import useDataFetching from "../hooks/fetchItemData";
+import Item from "./HomeItem";
 
-const ItemList = ({
+const HomeItemList = ({
   handleAddCart,
   handleClearItems,
   itemQuantity,
@@ -84,10 +83,10 @@ const ItemList = ({
   );
 };
 
-ItemList.propTypes = {
+HomeItemList.propTypes = {
   handleAddCart: PropTypes.func.isRequired,
   handleClearItems: PropTypes.func.isRequired,
   itemQuantity: PropTypes.func.isRequired,
 };
 
-export default ItemList;
+export default HomeItemList;

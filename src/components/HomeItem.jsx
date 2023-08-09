@@ -27,11 +27,10 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
-const Item = ({
+const HomeItem = ({
   children,
   image,
   title,
-  desc,
   itemId,
   handleAddCart,
   handleClearItems,
@@ -113,7 +112,7 @@ const Item = ({
   );
 };
 
-Item.propTypes = {
+HomeItem.propTypes = {
   children: PropTypes.array.isRequired,
   itemId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
@@ -123,4 +122,4 @@ Item.propTypes = {
   itemQuantity: PropTypes.func.isRequired,
 };
 
-export default Item;
+export default HomeItem;

@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
-import ItemList from "./components/ItemList";
+import ItemList from "./components/HomeItemList";
 import Cart from "./components/Cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
