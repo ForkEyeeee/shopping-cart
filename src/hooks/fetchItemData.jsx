@@ -23,7 +23,6 @@ const useDataFetching = (url) => {
 
     fetchData();
   }, [url]);
-
   return [data, loading, error];
 };
 

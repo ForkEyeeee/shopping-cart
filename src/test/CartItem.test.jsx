@@ -6,7 +6,6 @@ describe("CartItem", () => {
   it("renders CartItem Component", () => {
     render(<CartItem />);
     expect(screen.getAllByRole("button")).toBeDefined();
-    // expect(screen.getByText("Add to Cart")).toBeVisible();
-    // expect(screen.getByText("Clear Items")).toBeVisible();
+    expect(screen.getAllByRole("img")).toBeDefined();
   });
 });

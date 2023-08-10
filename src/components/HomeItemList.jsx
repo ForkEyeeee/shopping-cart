@@ -33,7 +33,9 @@ const HomeItemList = ({
         </HStack>
       </Center>
     );
+  console.log(error);
   if (error) return <Text data-testid="error-message">Oops</Text>;
+  console.log(error);
   return (
     <Box id="itemList">
       <Box>

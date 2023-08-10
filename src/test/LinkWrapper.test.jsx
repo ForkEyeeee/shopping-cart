@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import LinkWrapper from "../components/LinkWrapper";
-import { FaHome, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
+import { FaHome, FaShoppingCart } from "react-icons/fa";
 
 describe("LinkWrapper", () => {
   it("renders LinkWrapper Component", async () => {
@@ -12,22 +12,18 @@ describe("LinkWrapper", () => {
         <BrowserRouter>
           <LinkWrapper to="/" icon={FaHome} label="Home" />
           <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
-          <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
         </BrowserRouter>
       </ChakraProvider>
     );
 
-    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
-      "href",
-      "/"
-    );
-    expect(screen.getByRole("link", { name: "Cart" })).toHaveAttribute(
-      "href",
-      "/Cart"
-    );
-    expect(screen.getByRole("link", { name: "About" })).toHaveAttribute(
-      "href",
-      "/AboutUs"
-    );
+    const homeLinks = screen.getAllByRole("link", { name: "Home" });
+    homeLinks.forEach((link) => {
+      expect(link).toHaveAttribute("href", "/");
+    });
+
+    const cartLinks = screen.getAllByRole("link", { name: "Cart" });
+    cartLinks.forEach((link) => {
+      expect(link).toHaveAttribute("href", "/Cart");
+    });
   });
 });

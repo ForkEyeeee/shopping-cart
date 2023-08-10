@@ -41,7 +41,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
             </Badge>
           </Flex>
           <Text fontSize="1em" fontWeight="bold">
-            ${totalPrice.toFixed(0)}
+            ${totalPrice && totalPrice.toFixed(0)}
           </Text>
         </HStack>
       </HStack>
