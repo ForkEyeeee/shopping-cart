@@ -1,4 +1,14 @@
-import { Box, Heading, Text, Spinner, HStack, Center } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Spinner,
+  HStack,
+  Center,
+  Button,
+  Flex,
+  useToast,
+} from "@chakra-ui/react";
 import CartItem from "./CartItem";
 import PropTypes from "prop-types";
 
@@ -10,6 +20,8 @@ const Cart = ({
   handleAddCart,
   handleClearItems,
 }) => {
+  const toast = useToast();
+
   let filteredCartItems = [];
   console.log(data);
   const filterCart = () => {
@@ -40,16 +52,17 @@ const Cart = ({
 
   return (
     <Box className="wwad" height={"100vh"} overflow={"auto"} mt={20}>
-      <Heading
-        p={5}
-        textAlign="center"
-        bgGradient="linear(to-r, blue.500, green.500)"
-        bgClip="text"
-        fontWeight="bold"
-        letterSpacing="tight"
-      >
-        Shopping Cart
-      </Heading>
+      <Center>
+        <Heading
+          p={5}
+          bgGradient="linear(to-r, blue.500, green.500)"
+          bgClip="text"
+          fontWeight="bold"
+          letterSpacing="tight"
+        >
+          Shopping Cart
+        </Heading>
+      </Center>
       {filteredCartItems.map((item) => (
         <CartItem
           key={item.id}
@@ -77,6 +90,25 @@ const Cart = ({
           </Text>
         </CartItem>
       ))}
+      <Flex justifyContent="center" position="relative" top="-2">
+        <Button
+          colorScheme="whatsapp"
+          variant="solid"
+          size={"lg"}
+          onClick={() =>
+            toast({
+              title: "Checked out.",
+              description: "You've successfully checked out.",
+              status: "success",
+              duration: 9000,
+              isClosable: true,
+              position: "top",
+            })
+          }
+        >
+          Checkout
+        </Button>
+      </Flex>
     </Box>
   );
 };

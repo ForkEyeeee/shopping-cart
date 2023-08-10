@@ -23,7 +23,7 @@ const App = () => {
     "https://fakestoreapi.com/products/"
   );
   const location = useLocation();
-
+  console.log(data);
   useEffect(() => {
     //set cartItems and set totalPrice on initial mount
     const localCartItems = localStorage.getItem("cartItems");

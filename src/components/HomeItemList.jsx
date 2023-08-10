@@ -39,17 +39,18 @@ const HomeItemList = ({
   return (
     <Box id="itemList">
       <Box>
-        <Heading
-          mt={3}
-          p={5}
-          textAlign="center"
-          bgGradient="linear(to-r, blue.500, green.500)"
-          bgClip="text"
-          fontWeight="bold"
-          letterSpacing="tight"
-        >
-          Today&apos;s Stock
-        </Heading>
+        <Center>
+          <Heading
+            mt={3}
+            p={5}
+            bgGradient="linear(to-r, blue.500, green.500)"
+            bgClip="text"
+            fontWeight="bold"
+            letterSpacing="tight"
+          >
+            Today&apos;s Stock
+          </Heading>
+        </Center>
       </Box>
       <Grid
         templateColumns={{

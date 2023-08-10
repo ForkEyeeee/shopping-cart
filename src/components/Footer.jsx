@@ -21,7 +21,7 @@ const Footer = () => {
           spacing={4}
           _hover={{ textDecoration: "underline" }}
         >
-          <Text>GitHub</Text>
+          <Text>ForkEyeee</Text>
         </Link>
         <Image
           src="src\assets\icons\github.png"
