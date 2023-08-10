@@ -35,7 +35,7 @@ const HomeItemList = ({
     );
   if (error) return <Text data-testid="error-message">Oops</Text>;
   return (
-    <>
+    <Box id="itemList">
       <Box>
         <Heading p={5} textAlign={"center"}>
           Today&apos;s Stock
@@ -84,7 +84,7 @@ const HomeItemList = ({
             </Item>
           ))}
       </Grid>
-    </>
+    </Box>
   );
 };
 

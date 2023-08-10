@@ -15,21 +15,10 @@ const NavBar = ({ totalItems, totalPrice }) => {
       left="0"
       right="0"
       zIndex="1000"
-      // width="100%"
     >
-      <HStack justifyContent={"space-between"} spacing={3}>
+      <HStack justifyContent={"space-between"}>
         <Box boxSize={10} display={{ base: "none", sm: "block" }}>
-          <Image
-            src={"src/assets/navbar-logo.png"}
-            alt={"navbar logo"}
-            // borderRadius="lg"
-            // backgroundSize="cover"
-            // backgroundRepeat="no-repeat"
-            // width="100%"
-            // aspectRatio={4 / 3}
-            // objectFit="contain"
-            // padding={5}
-          />
+          <Image src={"src/assets/navbar-logo.png"} alt={"navbar logo"} />
         </Box>
         <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
 
@@ -39,7 +28,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
           <Badge colorScheme="red" fontSize="0.8em">
             {totalItems}
           </Badge>
-          <Text fontSize="1em" ml={2} fontWeight="bold">
+          <Text fontSize="1em" fontWeight="bold">
             ${totalPrice.toFixed(0)}
           </Text>
         </HStack>
