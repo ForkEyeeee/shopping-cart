@@ -40,10 +40,8 @@ const HomeItem = ({
   return (
     <GridItem>
       <VStack className="test">
-        <Card maxW="sm">
+        <Card maxW="sm" boxShadow={"lg"}>
           <CardBody className="testaa">
-            {" "}
-            {/*  //maxh */}{" "}
             <Box>
               <Image
                 src={image}

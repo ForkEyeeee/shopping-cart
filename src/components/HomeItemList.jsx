@@ -37,8 +37,16 @@ const HomeItemList = ({
   return (
     <Box id="itemList">
       <Box>
-        <Heading p={5} textAlign={"center"}>
-          Today&apos;s Stock
+        <Heading
+          mt={3}
+          p={5}
+          textAlign="center"
+          bgGradient="linear(to-r, blue.500, green.500)"
+          bgClip="text"
+          fontWeight="bold"
+          letterSpacing="tight"
+        >
+          Today's Stock
         </Heading>
       </Box>
       <Grid
@@ -47,6 +55,7 @@ const HomeItemList = ({
           md: "repeat(2, 1fr)",
           lg: "repeat(2, 1fr)",
           xl: "repeat(3, 1fr)",
+          "2xl": "repeat(4, 1fr)",
         }}
         gap={20}
         p={5}

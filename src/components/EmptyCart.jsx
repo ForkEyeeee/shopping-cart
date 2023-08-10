@@ -8,7 +8,7 @@ const EmptyCart = () => {
       <Text fontSize="xl" fontWeight="semibold" color="gray.600" mt={4}>
         Your cart is empty.
       </Text>
-      <Text color="gray.500" mt={2} pl={5} pr={5}>
+      <Text color="gray.500" mt={2}>
         Looks like you haven't added any items yet.
       </Text>
     </Center>
