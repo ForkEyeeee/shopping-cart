@@ -1,4 +1,4 @@
-import { Box, HStack, Badge, Text, Image } from "@chakra-ui/react";
+import { Box, HStack, Badge, Text, Image, Flex } from "@chakra-ui/react";
 import LinkWrapper from "./LinkWrapper";
 import { FaHome, FaShoppingCart } from "react-icons/fa";
 import PropTypes from "prop-types";
@@ -24,20 +24,25 @@ const NavBar = ({ totalItems, totalPrice }) => {
         <HStack>
           <LinkWrapper to="/" icon={FaHome} label="Home" />
 
-          <Box
-            display="flex"
-            alignItems="center"
-            width="140px"
-            justifyContent="space-between"
-          >
+          <Flex position="relative" mr={2}>
             <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
-            <Badge colorScheme="red" fontSize="0.8em">
+            <Badge
+              position="absolute"
+              top="-2"
+              right="-3"
+              borderRadius="full"
+              bg="red"
+              fontSize="0.8em"
+              color="white"
+              pl={1.5}
+              display={!totalItems ? "none" : "block"}
+            >
               {totalItems}
             </Badge>
-            <Text fontSize="1em" fontWeight="bold">
-              ${totalPrice.toFixed(0)}
-            </Text>
-          </Box>
+          </Flex>
+          <Text fontSize="1em" fontWeight="bold">
+            ${totalPrice.toFixed(0)}
+          </Text>
         </HStack>
       </HStack>
     </Box>

@@ -38,8 +38,8 @@ const CartItem = ({
       <Box flexShrink={0}>
         <Image
           borderRadius="md"
-          boxSize="150px"
-          objectFit="cover"
+          boxSize="200px"
+          objectFit="contain"
           src={image}
           alt={title}
           mb={{ base: 4, md: 0 }}

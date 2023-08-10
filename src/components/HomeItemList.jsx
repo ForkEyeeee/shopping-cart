@@ -46,7 +46,7 @@ const HomeItemList = ({
           fontWeight="bold"
           letterSpacing="tight"
         >
-          Today's Stock
+          Today&apos;s Stock
         </Heading>
       </Box>
       <Grid
@@ -101,6 +101,17 @@ HomeItemList.propTypes = {
   handleAddCart: PropTypes.func.isRequired,
   handleClearItems: PropTypes.func.isRequired,
   itemQuantity: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default HomeItemList;

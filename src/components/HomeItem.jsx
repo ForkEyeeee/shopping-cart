@@ -78,21 +78,14 @@ const HomeItem = ({
 
               <Popover placement="bottom">
                 <PopoverTrigger>
-                  <Button
-                    variant="outline"
-                    colorScheme="blue"
-                    // onClick={() => itemId === 0 && handleAddCart(0, itemId)}
-                  >
+                  <Button variant="outline" colorScheme="blue">
                     Add to Cart
                   </Button>
                 </PopoverTrigger>
                 <Portal>
                   <PopoverContent>
                     <PopoverArrow />
-                    <Flex className="test">
-                      {/* <PopoverHeader>{title}</PopoverHeader> */}
-                      {/* <PopoverCloseButton bg="purple.500" /> */}
-                    </Flex>
+                    <Flex className="test"></Flex>
                     <PopoverBody>
                       <NumberInput
                         float={"right"}

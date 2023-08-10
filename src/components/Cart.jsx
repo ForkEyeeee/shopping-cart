@@ -39,8 +39,17 @@ const Cart = ({
   if (error) return <Text data-testid="error-message">Oops</Text>;
 
   return (
-    <Box>
-      <Heading>Shopping Cart</Heading>
+    <Box className="wwad" height={"100vh"} overflow={"auto"} mt={20}>
+      <Heading
+        p={5}
+        textAlign="center"
+        bgGradient="linear(to-r, blue.500, green.500)"
+        bgClip="text"
+        fontWeight="bold"
+        letterSpacing="tight"
+      >
+        Shopping Cart
+      </Heading>
       {filteredCartItems.map((item) => (
         <CartItem
           key={item.id}

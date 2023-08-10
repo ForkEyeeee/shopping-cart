@@ -1,4 +1,4 @@
-import { Box, Center, Text, Icon } from "@chakra-ui/react";
+import { Center, Text, Icon } from "@chakra-ui/react";
 import { FaShoppingCart } from "react-icons/fa";
 
 const EmptyCart = () => {
@@ -9,7 +9,7 @@ const EmptyCart = () => {
         Your cart is empty.
       </Text>
       <Text color="gray.500" mt={2}>
-        Looks like you haven't added any items yet.
+        Looks like you haven&apos;t added any items yet.
       </Text>
     </Center>
   );
