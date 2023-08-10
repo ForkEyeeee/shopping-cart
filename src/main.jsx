@@ -11,6 +11,10 @@ const theme = extendTheme({
     lg: "62em", // 992px
     xl: "80em", // 1280px
   },
+  fonts: {
+    heading: "Montserrat",
+    body: "Montserrat",
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

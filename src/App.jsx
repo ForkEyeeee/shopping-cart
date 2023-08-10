@@ -20,7 +20,7 @@ const App = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const [data, loading, error] = useDataFetching(
-    "https://fakestoreapi.com/products/category/electronics"
+    "https://fakestoreapi.com/products/"
   );
   const location = useLocation();
 
@@ -77,10 +77,17 @@ const App = () => {
   }, [cartItems]);
 
   const handleAddCart = (e, itemId) => {
-    const getItem = JSON.parse(localStorage.getItem("cartItems"));
-    getItem.filter((item) => item.itemId !== itemId);
-    localStorage.setItem("cartItems", JSON.stringify(getItem));
-    setCartItems(getItem);
+    if (e === "0") {
+      const localStorageItem = JSON.parse(localStorage.getItem("cartItems"));
+      const filteredLocalStorageItem = localStorageItem.filter(
+        (item) => item.itemId !== itemId
+      );
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(filteredLocalStorageItem)
+      );
+      setCartItems(filteredLocalStorageItem);
+    }
 
     if (cartItems.find((item) => item.itemId === itemId) !== undefined) {
       setCartItems((prevState) =>

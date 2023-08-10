@@ -42,27 +42,35 @@ const HomeItem = ({
       <VStack className="test">
         <Card maxW="sm">
           <CardBody>
-            <Image boxSize={300} src={image} alt={title} borderRadius="lg" />
+            <Box>
+              <Image
+                src={image}
+                alt={title}
+                borderRadius="lg"
+                backgroundSize="cover"
+                backgroundRepeat="no-repeat"
+                width="100%"
+                aspectRatio={4 / 3}
+                objectFit="contain"
+                padding={5}
+              />
+            </Box>
             <Stack mt="6" spacing="3">
               <Box>{children}</Box>
             </Stack>
           </CardBody>
-          <Text
-            fontSize="sm"
-            fontWeight="medium"
-            p={1}
-            bg="blue.50"
-            width={"fit-content"}
-            borderRadius={5}
-          >
-            Qty: {count}
-          </Text>
+          <Box p={5}>
+            <Text mt={2} fontSize="md" fontWeight="semibold" color="blue.600">
+              Qty: {count > Number("0") ? count : ""}
+            </Text>
+          </Box>
           <Divider />
 
           <CardFooter justifyContent={"center"}>
-            <ButtonGroup spacing="2" className="test">
+            <ButtonGroup spacing={"2"} className="test">
               <Button
                 _hover={{ bg: "#ffcccb" }}
+                variant={"ghost"}
                 onClick={() => handleClearItems(itemId)}
               >
                 Clear Items
@@ -71,7 +79,7 @@ const HomeItem = ({
               <Popover placement="bottom">
                 <PopoverTrigger>
                   <Button
-                    variant="solid"
+                    variant="outline"
                     colorScheme="blue"
                     // onClick={() => itemId === 0 && handleAddCart(0, itemId)}
                   >

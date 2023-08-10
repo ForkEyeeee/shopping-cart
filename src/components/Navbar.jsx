@@ -20,6 +20,8 @@ const NavBar = ({ totalItems, totalPrice }) => {
         justifyContent={{ base: "flex-end", md: "space-around" }}
         spacing={3}
       >
+        <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
+
         <LinkWrapper to="/" icon={FaHome} label="Home" />
         <HStack spacing={1}>
           <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
@@ -27,10 +29,9 @@ const NavBar = ({ totalItems, totalPrice }) => {
             {totalItems}
           </Badge>
           <Text fontSize="1em" ml={2} fontWeight="bold">
-            ${totalPrice.toFixed(2)}
+            ${totalPrice.toFixed(0)}
           </Text>
         </HStack>
-        <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
       </HStack>
     </Box>
   );
