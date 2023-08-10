@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <Box
       position="relative"
-      h={["200px", "400px"]}
+      h={{ base: "300px", sm: "400px" }}
       backgroundImage="linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/hero-image.jpg')"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"

@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import useDataFetching from "./hooks/fetchItemData";
 import Cart from "./components/Cart";
 import { Routes, Route } from "react-router-dom";
-import AboutUs from "./components/AboutUs";
 import { useLocation } from "react-router-dom";
 import HomeItemList from "./components/HomeItemList";
+import EmptyCart from "./components/EmptyCart";
 
 if (process.env.NODE_ENV === "development") {
   // worker.start();
@@ -125,7 +125,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <Box>
       <Navbar totalItems={totalItems} totalPrice={totalPrice} />
       {location.pathname === "/" && <Hero />}
       <Routes>
@@ -142,6 +142,8 @@ const App = () => {
             />
           }
         />
+        {console.log(cartItems.length > 0)}
+
         <Route
           path="/Cart"
           element={
@@ -156,10 +158,12 @@ const App = () => {
             />
           }
         />
-        <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
+      {cartItems.length === 0 && !loading && location.pathname !== "/" && (
+        <EmptyCart />
+      )}
       {!loading && <Footer />}
-    </>
+    </Box>
   );
 };
 

@@ -15,9 +15,7 @@ describe("NavBar", () => {
     );
     const home = screen.getByText("Home");
     const shoppingCart = screen.getByText("Cart");
-    const aboutUs = screen.getByText("About");
     expect(home).toBeVisible();
     expect(shoppingCart).toBeVisible();
-    expect(aboutUs).toBeVisible();
   });
 });
