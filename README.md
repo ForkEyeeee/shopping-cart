@@ -66,6 +66,6 @@ This project is built using the following technologies:
 - Two main pages: Home page and Shopping Cart page.
 - Navigation bar to switch between pages.
 - Individual product cards with add to cart button and quantity specification.
-- Dynamic shopping cart updates based on user orders.
+- Local storage implemented to allow the user to retain their shopping cart information even after closing the browser.
 - Fetching product data from the FakeStore API.
 - MSW is used to intercept network requests and provide controlled responses, enabling effective testing of components that rely on API calls.

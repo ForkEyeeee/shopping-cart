@@ -1,4 +1,4 @@
-import { Box, HStack, Badge, Text } from "@chakra-ui/react"; // Import Text
+import { Box, HStack, Badge, Text, Image } from "@chakra-ui/react"; // Import Text
 import LinkWrapper from "./LinkWrapper";
 import { FaHome, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
 import PropTypes from "prop-types";
@@ -15,11 +15,22 @@ const NavBar = ({ totalItems, totalPrice }) => {
       left="0"
       right="0"
       zIndex="1000"
+      // width="100%"
     >
-      <HStack
-        justifyContent={{ base: "flex-end", md: "space-around" }}
-        spacing={3}
-      >
+      <HStack justifyContent={"space-between"} spacing={3}>
+        <Box boxSize={10} display={{ base: "none", sm: "block" }}>
+          <Image
+            src={"src/assets/navbar-logo.png"}
+            alt={"navbar logo"}
+            // borderRadius="lg"
+            // backgroundSize="cover"
+            // backgroundRepeat="no-repeat"
+            // width="100%"
+            // aspectRatio={4 / 3}
+            // objectFit="contain"
+            // padding={5}
+          />
+        </Box>
         <LinkWrapper to="/AboutUs" icon={FaInfoCircle} label="About" />
 
         <LinkWrapper to="/" icon={FaHome} label="Home" />

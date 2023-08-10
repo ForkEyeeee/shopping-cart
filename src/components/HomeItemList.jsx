@@ -45,8 +45,8 @@ const HomeItemList = ({
         templateColumns={{
           base: "repeat(1, 1fr)",
           md: "repeat(2, 1fr)",
-          lg: "repeat(3, 1fr)",
-          xl: "repeat(4, 1fr)",
+          lg: "repeat(2, 1fr)",
+          xl: "repeat(3, 1fr)",
         }}
         gap={20}
         p={5}
@@ -64,10 +64,15 @@ const HomeItemList = ({
               handleClearItems={handleClearItems}
               itemQuantity={itemQuantity}
             >
-              <Text p={5} fontWeight={"semibold"} fontSize={"md"} noOfLines={2}>
+              <Text
+                p={5}
+                fontWeight={"semibold"}
+                fontSize={"md"}
+                noOfLines={2}
+                minH={"88px"}
+              >
                 {item.title}
               </Text>
-              <Text> {}</Text>
               <Text
                 textAlign={"end"}
                 color={"green"}

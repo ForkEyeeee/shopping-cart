@@ -125,7 +125,7 @@ const App = () => {
   };
 
   return (
-    <Box>
+    <>
       <Navbar totalItems={totalItems} totalPrice={totalPrice} />
       {location.pathname === "/" && <Hero />}
       <Routes>
@@ -158,8 +158,8 @@ const App = () => {
         />
         <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
-      <Footer />
-    </Box>
+      {!loading && <Footer />}
+    </>
   );
 };
 

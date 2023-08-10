@@ -25,68 +25,59 @@ const CartItem = ({
 }) => {
   return (
     <Flex
+      boxShadow="md"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
       m={4}
-      alignItems={"center"}
+      p={4}
+      alignItems="center"
       flexDirection={{ base: "column", md: "row" }}
+      spaceBetween
     >
-      <Box p={4}>
+      <Box flexShrink={0}>
         <Image
           borderRadius="md"
-          boxSize="100px"
+          boxSize="150px"
           objectFit="cover"
           src={image}
           alt={title}
+          mb={{ base: 4, md: 0 }}
         />
-        <Text
-          fontSize="sm"
-          fontWeight="medium"
-          p={1}
-          bg="blue.50"
-          borderRadius="sm"
-        >
-          Qty: {count}
-        </Text>
       </Box>
-      <Box p={4} flex="1">
-        <Flex justify="space-between">
-          <Box textAlign={"center"}>
-            <Heading fontSize="xl">{title}</Heading>
-            <Text mt={2} textAlign={"center"}>
-              {description}
-            </Text>
-            <Text fontSize="xl">${price}</Text>
-            <Button
-              colorScheme="red"
-              size="sm"
-              mt={2}
-              onClick={() => {
-                handleClearItems(itemId);
-              }}
-            >
-              Remove
-            </Button>
-            <NumberInput
-              float={"right"}
-              size="md"
-              maxW={24}
-              defaultValue={1}
-              value={count}
-              min={1}
-              onChange={(e) => {
-                handleAddCart(e, itemId);
-              }}
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-          </Box>
-          <Box></Box>
+
+      <Box ml={{ md: 6 }}>
+        <Heading fontSize="xl" mb={2}>
+          {title}
+        </Heading>
+        <Text>{description}</Text>
+        <Text fontSize="lg" fontWeight="bold" my={2}>
+          ${price}
+        </Text>
+
+        <Flex align="center" mt={2}>
+          <Button
+            colorScheme="red"
+            size="sm"
+            onClick={() => handleClearItems(itemId)}
+            mr={4}
+          >
+            Remove
+          </Button>
+
+          <NumberInput
+            size="md"
+            maxW={24}
+            value={count}
+            min={1}
+            onChange={(e) => handleAddCart(e, itemId)}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
         </Flex>
       </Box>
     </Flex>
