@@ -17,13 +17,13 @@ const NavBar = ({ totalItems, totalPrice }) => {
       zIndex="1000"
     >
       <HStack justifyContent="space-between">
-        <Box boxSize={10} display={"flex"} alignItems={"center"}>
-          <Image src={"src/assets/navbar-logo.png"} alt={"navbar logo"} />
+        <Box boxSize={14} display={"flex"} alignItems={"center"}>
+          <LinkWrapper to="/" hover={false}>
+            <Image src={"src/assets/navbar-logo.png"} alt={"navbar logo"} />
+          </LinkWrapper>
         </Box>
-
         <HStack>
           <LinkWrapper to="/" icon={FaHome} label="Home" />
-
           <Flex position="relative" mr={2}>
             <LinkWrapper to="/Cart" icon={FaShoppingCart} label="Cart" />
             <Badge
@@ -41,7 +41,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
             </Badge>
           </Flex>
           <Text fontSize="1em" fontWeight="bold">
-            ${totalPrice && totalPrice.toFixed(0)}
+            ${totalPrice && totalPrice.toFixed(2)}
           </Text>
         </HStack>
       </HStack>

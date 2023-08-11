@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import HomeItemList from "./components/HomeItemList";
-import EmptyCart from "./components/EmptyCart";
+import ErrorPage from "./components/ErrorPage";
 
 if (process.env.NODE_ENV === "development") {
   // worker.start();
@@ -23,7 +23,7 @@ const App = () => {
     "https://fakestoreapi.com/products/"
   );
   const location = useLocation();
-  console.log(data);
+
   useEffect(() => {
     //set cartItems and set totalPrice on initial mount
     const localCartItems = localStorage.getItem("cartItems");
@@ -54,7 +54,6 @@ const App = () => {
       }
       return filteredCartItems;
     };
-    console.log(filterCart());
     const newTotalPrice = filterCart().reduce((acc, currItem) => {
       return (
         acc +
@@ -138,7 +137,7 @@ const App = () => {
       position: "top",
     });
   };
-
+  console.log(location.pathname);
   return (
     <Box>
       <Navbar totalItems={totalItems} totalPrice={totalPrice} />
@@ -157,8 +156,6 @@ const App = () => {
             />
           }
         />
-        {console.log(cartItems.length > 0)}
-
         <Route
           path="/Cart"
           element={
@@ -174,8 +171,8 @@ const App = () => {
             />
           }
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-
       {!loading && <Footer />}
     </Box>
   );

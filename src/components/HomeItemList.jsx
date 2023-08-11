@@ -33,9 +33,14 @@ const HomeItemList = ({
         </HStack>
       </Center>
     );
-  if (error) return <Text data-testid="error-message">Oops</Text>;
+  if (error)
+    return (
+      <Center data-testid="error-message" height={"100vh"} fontSize={"2xl"}>
+        Failed to Fetch Data
+      </Center>
+    );
   return (
-    <Box id="itemList">
+    <Box>
       <Box>
         <Center>
           <Heading
@@ -45,6 +50,7 @@ const HomeItemList = ({
             bgClip="text"
             fontWeight="bold"
             letterSpacing="tight"
+            id="itemList"
           >
             Today&apos;s Stock
           </Heading>
@@ -85,7 +91,7 @@ HomeItemList.propTypes = {
   handleClearItems: PropTypes.func.isRequired,
   itemQuantity: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   data: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -96,5 +102,4 @@ HomeItemList.propTypes = {
     })
   ),
 };
-
 export default HomeItemList;

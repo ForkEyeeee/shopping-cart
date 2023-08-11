@@ -7,7 +7,6 @@ import {
   Center,
   Button,
   Flex,
-  VStack,
 } from "@chakra-ui/react";
 import CartItem from "./CartItem";
 import PropTypes from "prop-types";
@@ -23,7 +22,6 @@ const Cart = ({
   handleCheckout,
 }) => {
   let filteredCartItems = [];
-  console.log(data);
   const filterCart = () => {
     for (let i = 0; i < cartItems.length; i++) {
       filteredCartItems.push(
@@ -52,16 +50,27 @@ const Cart = ({
 
   return (
     <>
-      <Box overflow={"auto"} mt={20}>
+      <Box
+        overflow={"auto"}
+        minH={
+          cartItems !== undefined ? (cartItems.length > 0 ? "100vh" : "") : ""
+        }
+        mt={20}
+      >
         <Center alignContent={"flex-start"}>
           <Heading
-            conditoanlylrndermemptyacartt
             p={5}
             bgGradient="linear(to-r, blue.500, green.500)"
             bgClip="text"
             fontWeight="bold"
             letterSpacing="tight"
-            display={cartItems.length > 0 ? "block" : "none"}
+            display={
+              cartItems !== undefined
+                ? cartItems.length > 0
+                  ? "block"
+                  : "none"
+                : "none"
+            }
           >
             Shopping Cart
           </Heading>
@@ -94,12 +103,18 @@ const Cart = ({
             </Text>
           </CartItem>
         ))}
-        <Flex justifyContent="center" position="relative" top="-2">
+        <Flex justifyContent="flex-end" position="relative" top="-2" mr={4}>
           <Button
             colorScheme="whatsapp"
             variant="solid"
             size={"lg"}
-            display={cartItems.length > 0 ? "block" : "none"}
+            display={
+              cartItems !== undefined
+                ? cartItems.length > 0
+                  ? "block"
+                  : "none"
+                : "none"
+            }
             onClick={() => handleCheckout()}
           >
             Checkout
@@ -113,11 +128,12 @@ const Cart = ({
 
 Cart.propTypes = {
   data: PropTypes.array,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   loading: PropTypes.bool.isRequired,
   cartItems: PropTypes.array,
   handleAddCart: PropTypes.func.isRequired,
   handleClearItems: PropTypes.func.isRequired,
+  handleCheckout: PropTypes.func.isRequired,
 };
 
 export default Cart;

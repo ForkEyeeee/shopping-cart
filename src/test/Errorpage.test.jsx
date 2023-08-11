@@ -5,7 +5,7 @@ import ErrorPage from "../components/ErrorPage";
 describe("Errorpage", () => {
   it("renders Errorpage Component", () => {
     render(<ErrorPage />);
-    const error = screen.getByText("Error");
+    const error = screen.getByText("404 - Page Not Found");
     expect(error).toBeInTheDocument();
   });
 });

@@ -25,7 +25,7 @@ it("shows an error message when API call fails", async () => {
     </ChakraProvider>
   );
 
-  const errorMessage = screen.getByText("Oops");
+  const errorMessage = screen.getByText("Failed to Fetch Data");
   expect(errorMessage).toBeVisible();
 });
 

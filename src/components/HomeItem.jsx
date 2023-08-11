@@ -38,9 +38,9 @@ const HomeItem = ({
   const count = typeof itemQuantity === "function" ? itemQuantity(itemId) : 0;
   return (
     <GridItem>
-      <VStack className="test">
+      <VStack>
         <Card maxW="sm" boxShadow={"lg"}>
-          <CardBody className="testaa">
+          <CardBody>
             <Box>
               <Image
                 src={image}

@@ -1,4 +1,4 @@
-import { render, screen, findByText } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter, Link } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
