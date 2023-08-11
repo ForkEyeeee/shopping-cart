@@ -132,7 +132,7 @@ const App = () => {
       title: "Checked out.",
       description: "You've successfully checked out.",
       status: "success",
-      duration: 9000,
+      duration: 5000,
       isClosable: true,
       position: "top",
     });

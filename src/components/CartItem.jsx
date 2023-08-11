@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   Text,
-  VStack,
   Button,
   NumberInput,
   NumberInputStepper,
