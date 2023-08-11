@@ -21,15 +21,15 @@ const Cart = ({
   handleClearItems,
   handleCheckout,
 }) => {
-  let filteredCartItems = [];
   const filterCart = () => {
+    const filteredCartItems = [];
     for (let i = 0; i < cartItems.length; i++) {
       filteredCartItems.push(
         data.find((item) => item.id === cartItems[i].itemId)
       );
     }
+    return filteredCartItems;
   };
-  data && filterCart();
 
   if (loading)
     return (
@@ -75,34 +75,35 @@ const Cart = ({
             Shopping Cart
           </Heading>
         </Center>
-        {filteredCartItems.map((item) => (
-          <CartItem
-            key={item.id}
-            itemId={item.id}
-            image={item.image}
-            title={item.title}
-            count={
-              cartItems.filter((cartItem) => cartItem.itemId === item.id)[0]
-                .count
-            }
-            description={item.description}
-            price={item.price}
-            handleAddCart={handleAddCart}
-            handleClearItems={handleClearItems}
-          >
-            <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
-              {item.title}
-            </Text>
-            <Text
-              textAlign={"end"}
-              color={"green"}
-              fontWeight={"bold"}
-              fontSize={32}
+        {data &&
+          filterCart().map((item) => (
+            <CartItem
+              key={item.id}
+              itemId={item.id}
+              image={item.image}
+              title={item.title}
+              count={
+                cartItems.filter((cartItem) => cartItem.itemId === item.id)[0]
+                  .count
+              }
+              description={item.description}
+              price={item.price}
+              handleAddCart={handleAddCart}
+              handleClearItems={handleClearItems}
             >
-              ${item.price}
-            </Text>
-          </CartItem>
-        ))}
+              <Text p={5} fontWeight={"semibold"} fontSize={"lg"}>
+                {item.title}
+              </Text>
+              <Text
+                textAlign={"end"}
+                color={"green"}
+                fontWeight={"bold"}
+                fontSize={32}
+              >
+                ${item.price}
+              </Text>
+            </CartItem>
+          ))}
         <Flex justifyContent="flex-end" position="relative" top="-2" mr={4}>
           <Button
             colorScheme="whatsapp"

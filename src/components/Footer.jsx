@@ -23,11 +23,7 @@ const Footer = () => {
         >
           <Text>ForkEyeee</Text>
         </Link>
-        <Image
-          src="src\assets\icons\github.png"
-          alt="github-image"
-          boxSize={8}
-        />
+        <Image src="/assets/icons/github.png" alt="github-image" boxSize={8} />
       </HStack>
     </Box>
   );

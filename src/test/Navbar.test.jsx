@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 
 describe("NavBar", () => {
   it("renders NavBar Component", async () => {

@@ -1,14 +1,14 @@
 import { Box, useToast } from "@chakra-ui/react";
-import Navbar from "./components/NavBar";
-import Hero from "./components/Hero";
-import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
-import useDataFetching from "./hooks/fetchItemData";
-import Cart from "./components/Cart";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import useDataFetching from "./hooks/fetchItemData";
 import HomeItemList from "./components/HomeItemList";
 import ErrorPage from "./components/ErrorPage";
+import NavBar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Footer from "./components/Footer";
+import Cart from "./components/Cart";
 
 if (process.env.NODE_ENV === "development") {
   // worker.start();
@@ -137,10 +137,9 @@ const App = () => {
       position: "top",
     });
   };
-  console.log(location.pathname);
   return (
     <Box>
-      <Navbar totalItems={totalItems} totalPrice={totalPrice} />
+      <NavBar totalItems={totalItems} totalPrice={totalPrice} />
       {location.pathname === "/" && <Hero />}
       <Routes>
         <Route

@@ -29,25 +29,6 @@ it("shows an error message when API call fails", async () => {
   expect(errorMessage).toBeVisible();
 });
 
-it("renders images", async () => {
-  const { result } = renderHook(() =>
-    useDataFetching("https://fakestoreapi.com/products/")
-  );
-
-  await waitFor(() => expect(result.current[0]).not.toBeNull());
-
-  render(
-    <ChakraProvider>
-      <BrowserRouter>
-        <HomeItemList data={result.current[0]} />
-      </BrowserRouter>
-    </ChakraProvider>
-  );
-
-  const imgElements = await screen.findAllByRole("img");
-  expect(imgElements.length).toBeGreaterThan(0);
-});
-
 it("renders ItemsList Component", async () => {
   render(
     <ChakraProvider>

@@ -19,7 +19,7 @@ const NavBar = ({ totalItems, totalPrice }) => {
       <HStack justifyContent="space-between">
         <Box boxSize={14} display={"flex"} alignItems={"center"}>
           <LinkWrapper to="/" hover={false}>
-            <Image src={"src/assets/navbar-logo.png"} alt={"navbar logo"} />
+            <Image src={"/assets/images/navbar-logo.png"} alt={"navbar logo"} />
           </LinkWrapper>
         </Box>
         <HStack>
