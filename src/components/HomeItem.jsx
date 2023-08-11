@@ -8,6 +8,7 @@ import {
   Stack,
   Text,
   Divider,
+  Center,
   CardFooter,
   ButtonGroup,
   Button,
@@ -56,7 +57,6 @@ const HomeItem = ({
             </Box>
             <Stack mt="6" spacing="3">
               <Box>
-                {" "}
                 <Text
                   p={5}
                   fontWeight={"semibold"}
@@ -101,26 +101,28 @@ const HomeItem = ({
                   </Button>
                 </PopoverTrigger>
                 <Portal>
-                  <PopoverContent>
+                  <PopoverContent className="aaw" width={"100%"}>
                     <PopoverArrow />
                     <PopoverBody>
-                      <NumberInput
-                        float={"right"}
-                        size="md"
-                        maxW={24}
-                        defaultValue={0}
-                        value={count}
-                        min={0}
-                        onChange={(e) => {
-                          handleAddCart(e, itemId);
-                        }}
-                      >
-                        <NumberInputField />
-                        <NumberInputStepper>
-                          <NumberIncrementStepper />
-                          <NumberDecrementStepper />
-                        </NumberInputStepper>
-                      </NumberInput>
+                      <Center>
+                        <NumberInput
+                          float={"right"}
+                          size="md"
+                          maxW={24}
+                          defaultValue={0}
+                          value={count}
+                          min={0}
+                          onChange={(e) => {
+                            handleAddCart(e, itemId);
+                          }}
+                        >
+                          <NumberInputField />
+                          <NumberInputStepper>
+                            <NumberIncrementStepper />
+                            <NumberDecrementStepper />
+                          </NumberInputStepper>
+                        </NumberInput>
+                      </Center>
                     </PopoverBody>
                     <PopoverFooter textAlign={"center"}>
                       Select Quantity
