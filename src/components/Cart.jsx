@@ -56,6 +56,9 @@ const Cart = ({
           cartItems !== undefined ? (cartItems.length > 0 ? "100vh" : "") : ""
         }
         mt={20}
+        display={{ xl: "flex" }}
+        flexDir={{ xl: "column" }}
+        alignItems={{ xl: "center" }}
       >
         <Center alignContent={"flex-start"}>
           <Heading

@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Text,
+  VStack,
   Button,
   NumberInput,
   NumberInputStepper,
@@ -31,30 +32,37 @@ const CartItem = ({
       overflow="hidden"
       m={4}
       p={4}
-      alignItems="center"
-      flexDirection={{ base: "column", md: "row" }}
+      direction={{ base: "column", md: "row" }}
+      align={{ base: "center", sm: "start" }}
+      maxW={{ xl: "900px" }}
+      justifyContent={"space-between"}
     >
-      <Box flexShrink={0}>
+      <Box
+        mb={{ base: 4, md: 0 }}
+        display={"flex"}
+        justifyContent={"center"}
+        minW={{ base: "100%", md: "200px" }}
+      >
         <Image
           borderRadius="md"
           boxSize="200px"
           objectFit="contain"
           src={image}
           alt={title}
-          mb={{ base: 4, md: 0 }}
+          alignItems={"center"}
         />
       </Box>
-
-      <Box ml={{ md: 6 }}>
-        <Heading fontSize="xl" mb={2}>
+      <Flex direction="column" ml={{ md: 4 }}>
+        <Heading fontSize="xl" mb={2} textAlign={"center"}>
           {title}
         </Heading>
-        <Text>{description}</Text>
-        <Text fontSize="lg" fontWeight="bold" my={2}>
-          ${price}
+        <Text flex="1" maxW={{ base: "250px", sm: "100%" }}>
+          {description}
         </Text>
-
-        <Flex align="center" mt={2}>
+        <Flex justify="flex-end" align="center" mt={4}>
+          <Text fontSize="lg" fontWeight="bold" color={"green"} mr={4}>
+            ${price}
+          </Text>
           <Button
             colorScheme="red"
             size="sm"
@@ -63,7 +71,6 @@ const CartItem = ({
           >
             Remove
           </Button>
-
           <NumberInput
             size="md"
             maxW={24}
@@ -78,7 +85,7 @@ const CartItem = ({
             </NumberInputStepper>
           </NumberInput>
         </Flex>
-      </Box>
+      </Flex>
     </Flex>
   );
 };
