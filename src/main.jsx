@@ -15,18 +15,6 @@ const theme = extendTheme({
     heading: "Montserrat",
     body: "Montserrat",
   },
-  components: {
-    Popover: {
-      variants: {
-        responsive: {
-          popper: {
-            maxWidth: "unset",
-            width: "unset",
-          },
-        },
-      },
-    },
-  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -36,7 +36,8 @@ const HomeItem = ({
   handleClearItems,
   itemQuantity,
 }) => {
-  const count = typeof itemQuantity === "function" ? itemQuantity(itemId) : 0;
+  const count = typeof itemQuantity === "function" && itemQuantity(itemId);
+
   return (
     <GridItem>
       <VStack>
@@ -79,7 +80,7 @@ const HomeItem = ({
           </CardBody>
           <Box p={5}>
             <Text mt={2} fontSize="md" fontWeight="semibold" color="blue.600">
-              Qty: {count > Number("0") ? count : ""}
+              Qty: {count > 0 ? count : ""}
             </Text>
           </Box>
           <Divider />
@@ -89,19 +90,27 @@ const HomeItem = ({
               <Button
                 _hover={{ bg: "#ffcccb" }}
                 variant={"ghost"}
-                onClick={() => handleClearItems(itemId)}
+                onClick={() => {
+                  handleClearItems(itemId);
+                }}
               >
                 Clear Items
               </Button>
 
               <Popover placement="bottom">
                 <PopoverTrigger>
-                  <Button variant="outline" colorScheme="blue">
+                  <Button
+                    variant="outline"
+                    colorScheme="green"
+                    onClick={() => {
+                      handleAddCart(count === undefined ? 1 : count, itemId);
+                    }}
+                  >
                     Add to Cart
                   </Button>
                 </PopoverTrigger>
                 <Portal>
-                  <PopoverContent className="aaw" width={"100%"}>
+                  <PopoverContent width={"100%"} borderWidth={2}>
                     <PopoverArrow />
                     <PopoverBody>
                       <Center>
@@ -109,12 +118,10 @@ const HomeItem = ({
                           float={"right"}
                           size="md"
                           maxW={24}
-                          defaultValue={0}
-                          value={count}
+                          defaultValue={count === undefined ? 1 : count}
+                          value={count === undefined ? 0 : count}
                           min={0}
-                          onChange={(e) => {
-                            handleAddCart(e, itemId);
-                          }}
+                          onChange={(e) => handleAddCart(e, itemId)}
                         >
                           <NumberInputField />
                           <NumberInputStepper>
