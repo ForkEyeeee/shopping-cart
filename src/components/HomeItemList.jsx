@@ -33,9 +33,7 @@ const HomeItemList = ({
         </HStack>
       </Center>
     );
-  console.log(error);
   if (error) return <Text data-testid="error-message">Oops</Text>;
-  console.log(error);
   return (
     <Box id="itemList">
       <Box>
@@ -62,7 +60,6 @@ const HomeItemList = ({
         }}
         gap={20}
         p={5}
-        className="aaw"
       >
         {data &&
           data.map((item) => (
@@ -72,28 +69,11 @@ const HomeItemList = ({
               image={item.image}
               desc={item.description}
               title={item.title}
+              price={item.price}
               handleAddCart={handleAddCart}
               handleClearItems={handleClearItems}
               itemQuantity={itemQuantity}
-            >
-              <Text
-                p={5}
-                fontWeight={"semibold"}
-                fontSize={"md"}
-                noOfLines={2}
-                minH={"88px"}
-              >
-                {item.title}
-              </Text>
-              <Text
-                textAlign={"end"}
-                color={"green"}
-                fontWeight={"bold"}
-                fontSize={32}
-              >
-                ${item.price}
-              </Text>
-            </Item>
+            />
           ))}
       </Grid>
     </Box>

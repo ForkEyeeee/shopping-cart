@@ -33,7 +33,6 @@ const CartItem = ({
       p={4}
       alignItems="center"
       flexDirection={{ base: "column", md: "row" }}
-      spaceBetween
     >
       <Box flexShrink={0}>
         <Image

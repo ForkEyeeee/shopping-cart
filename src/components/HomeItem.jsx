@@ -1,7 +1,6 @@
 import {
   Card,
   Box,
-  Flex,
   CardBody,
   Image,
   VStack,
@@ -28,9 +27,9 @@ import {
 import PropTypes from "prop-types";
 
 const HomeItem = ({
-  children,
   image,
   title,
+  price,
   itemId,
   handleAddCart,
   handleClearItems,
@@ -56,7 +55,26 @@ const HomeItem = ({
               />
             </Box>
             <Stack mt="6" spacing="3">
-              <Box>{children}</Box>
+              <Box>
+                {" "}
+                <Text
+                  p={5}
+                  fontWeight={"semibold"}
+                  fontSize={"md"}
+                  noOfLines={2}
+                  minH={"88px"}
+                >
+                  {title}
+                </Text>
+                <Text
+                  textAlign={"end"}
+                  color={"green"}
+                  fontWeight={"bold"}
+                  fontSize={32}
+                >
+                  ${price}
+                </Text>
+              </Box>
             </Stack>
           </CardBody>
           <Box p={5}>
@@ -85,7 +103,6 @@ const HomeItem = ({
                 <Portal>
                   <PopoverContent>
                     <PopoverArrow />
-                    <Flex className="test"></Flex>
                     <PopoverBody>
                       <NumberInput
                         float={"right"}
@@ -120,7 +137,7 @@ const HomeItem = ({
 };
 
 HomeItem.propTypes = {
-  children: PropTypes.array.isRequired,
+  price: PropTypes.number.isRequired,
   itemId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

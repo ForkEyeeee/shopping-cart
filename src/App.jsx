@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
@@ -124,6 +124,21 @@ const App = () => {
     }
   };
 
+  const toast = useToast();
+
+  const handleCheckout = () => {
+    setCartItems([]);
+    localStorage.clear();
+    toast({
+      title: "Checked out.",
+      description: "You've successfully checked out.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
   return (
     <Box>
       <Navbar totalItems={totalItems} totalPrice={totalPrice} />
@@ -155,13 +170,12 @@ const App = () => {
               loading={loading}
               error={error}
               cartItems={cartItems}
+              handleCheckout={handleCheckout}
             />
           }
         />
       </Routes>
-      {cartItems.length === 0 && !loading && location.pathname !== "/" && (
-        <EmptyCart />
-      )}
+
       {!loading && <Footer />}
     </Box>
   );

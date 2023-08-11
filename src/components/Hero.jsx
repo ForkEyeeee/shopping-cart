@@ -1,4 +1,4 @@
-import { Box, Image, Heading, Text, Button, Center } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Center } from "@chakra-ui/react";
 import { HashLink as Link } from "react-router-hash-link";
 
 const Hero = () => {
@@ -19,7 +19,7 @@ const Hero = () => {
         w="100%"
         flexDirection="column"
       >
-        <Heading fontSize={["2xl", "4xl"]} color="white">
+        <Heading fontSize={{ base: "2xl", sm: "4xl" }} color="white">
           Buy it all here
         </Heading>
         <Text color="white" mt={2}>
