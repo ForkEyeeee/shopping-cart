@@ -55,10 +55,16 @@ const CartItem = ({
         <Heading fontSize="xl" mb={2} textAlign={"center"}>
           {title}
         </Heading>
-        <Text flex="1" maxW={{ base: "250px", sm: "100%" }}>
+        <Text maxW={{ base: "250px", sm: "100%" }} textAlign={"center"}>
           {description}
         </Text>
-        <Flex justify="flex-end" align="center" mt={4}>
+        <Flex
+          justify="flex-end"
+          align="center"
+          mt={4}
+          minH={"100px"}
+          alignItems={"flex-end"}
+        >
           <Text fontSize="lg" fontWeight="bold" color={"green"} mr={4}>
             ${price}
           </Text>
